@@ -1,4 +1,3 @@
-//coment
 import java.util.Scanner;
 
 public class Ejercicios {
@@ -142,8 +141,8 @@ public class Ejercicios {
          * libras y gramos m/S a km/s
          */
 
-        double metros = 0.00, kilogramos = 0.00, velocidad = 0.00, cm = 100.00, pulgada = 39.37, gramos = 1000.00,
-                libra = 2.20, ms = 0.00;
+        double metros = 0.00, kilogramos = 0.00, ms = 0.00, cm = 100.00, pulgada = 39.37, gramos = 1000.00,
+                libra = 2.20;
         double a, b;
 
         System.out.println("Seleccione la cantidad que desee convertir: ");
