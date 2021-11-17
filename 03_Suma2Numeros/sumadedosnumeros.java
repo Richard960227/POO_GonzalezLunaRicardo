@@ -1,4 +1,3 @@
-//coment
 /*
 *Para poder hacer el programa de la suma de dos numeros
 debemos de entender el algoritmo de la suma

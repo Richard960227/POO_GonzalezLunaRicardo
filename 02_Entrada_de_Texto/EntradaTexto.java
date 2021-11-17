@@ -1,4 +1,3 @@
-//coment
 class EntradaTexto{
     //Cuerpo del Programa
 

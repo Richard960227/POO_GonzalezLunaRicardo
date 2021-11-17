@@ -1,5 +1,3 @@
-//esto es un comentario porque a mi
-
 /*Esto es otro comentario, 
 los comentarios no van a afectar el codigo fuente de la clase
 */

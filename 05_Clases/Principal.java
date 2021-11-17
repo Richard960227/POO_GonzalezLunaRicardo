@@ -1,4 +1,3 @@
-//coment
 public class principal {
     //esta va  aser la clase principal para mandar a llamar
 

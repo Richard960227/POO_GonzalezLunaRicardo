@@ -565,7 +565,7 @@ class Estructuradedatos {
                     }
                     break;
                 }
-             
+
                 System.out.println("\u00BFDeseas repetir el programa? Si lo desea escriba s");
                 /*
                  * para recibir la respuesta debo obtener un caracter s para cuando se reciben
