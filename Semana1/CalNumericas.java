@@ -13,11 +13,11 @@ public class CalNumericas {
 
         System.out.println("A=19 y 20; B =16, 17 y 18, C = 13, 14 y 15, D = 10, 11 y 12, E = 1 hasta el 9");
 
-        System.out.println("Ingresa un numero entre 1 y 20");
+        System.out.println("Ingresa un Numero entre 1 y 20");
         n = entrada.nextInt();
 
         while (n > 0 && n > 20) {
-            System.out.println("Ingrese un Número Correcto");
+            System.out.println("Ingrese un Numero Correcto");
             n = entrada.nextInt();
         }
 

@@ -577,7 +577,7 @@ class Estructuradedatos {
                 // Si el usuario ingresa si solo detecta la s es la posicion del caracter que
                 // queremos
 
-            } while (letras == 's');
+            } while (letras == 's' || letras == 'S');
             // aqui se cierra el do
         } catch (Exception e) {
             System.out.println("No me diste un Valor N\u00famerico");
