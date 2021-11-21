@@ -5,6 +5,8 @@ public class Arreglos {
     Scanner entrada = new Scanner(System.in);
 
     char op, letra;
+    int i;
+    int[] numeros = new int[10]; // array que contendrá los números leídos por teclado
 
     public void menu() {
         // menu del programa
@@ -64,9 +66,7 @@ public class Arreglos {
          * posteriormente que calcule y muestre el promedio de los valores positivos y
          * de los negativos.
          */
-        int i;
         int pos = 0, neg = 0; // contadores de los números positivos y negativos
-        int[] numeros = new int[10]; // array que contendrá los números leídos por teclado
         double sumaPos = 0, sumaNeg = 0; // acumuladores para las sumas de positivos y negativos
 
         // lectura de datos y llenar el array
@@ -107,9 +107,6 @@ public class Arreglos {
          * array. Calcula y muestre el promedio de los números que estén en las
          * posiciones pares del array.
          */
-
-        int i;
-        int[] numeros = new int[10];
         double media = 0;
 
         // lectura de datos y llenar el array
@@ -137,9 +134,6 @@ public class Arreglos {
          * Promedio de las calificaciones. La calificación más alta y la más baja. El
          * número de calificaciones superiores al promedio.
          */
-
-        int i;
-        int[] numeros = new int[10];
         double suma = 0, media;
 
         // lectura de Calificaciones y llenar el array
@@ -154,13 +148,13 @@ public class Arreglos {
             suma = suma + numeros[i];
         }
 
-        // Calcular la media
+        // Calcular promedio
         media = suma / numeros.length;
 
-        // Mostrar la media
+        // Mostrar promedio
         System.out.println("Promedio de Calificaciones: " + media);
 
-        // Mostrar los valores superiores a la media
+        // Mostrar los valores superiores al promedio
         if (media < i) {
             System.out.println("Calificaciones Superiores al Promedio: ");
 
