@@ -1,4 +1,4 @@
-public class principal {
+public class Principal {
     //esta va  aser la clase principal para mandar a llamar
 
 
