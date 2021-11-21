@@ -12,51 +12,51 @@ public class Arreglos {
         // menu del programa
 
         do {
+            try {
+                System.out.println("Arreglos");
+                System.out.println("a.- Promedio Positivos y Negativos");
+                System.out.println("b.- Promedio de los N\u00fameros");
+                System.out.println("c.- Calificaciones");
+                System.out.println("d.- Suma de Matriz");
+                System.out.println("e.- Palindromo");
+                op = entrada.next().charAt(0);
 
-            System.out.println("Arreglos");
-            System.out.println("a.- Promedio Positivos y Negativos");
-            System.out.println("b.- Promedio de los N\u00fameros");
-            System.out.println("c.- Calificaciones");
-            System.out.println("d.- Suma de Matriz");
-            System.out.println("e.- Palindromo");
-            System.out.println("f.- Salir");
+                switch (op) {
+                case 'a':
+                    Arreglo1();
+                    break;
 
-            op = entrada.next().charAt(0);
+                case 'b':
+                    Arreglo2();
+                    break;
 
-            switch (op) {
-            case 'a':
-                Arreglo1();
-                break;
+                case 'c':
+                    Arreglo3();
+                    break;
 
-            case 'b':
-                Arreglo2();
-                break;
+                case 'd':
+                    Arreglo4();
+                    break;
 
-            case 'c':
-                Arreglo3();
-                break;
+                case 'e':
+                    Arreglo5();
+                    break;
 
-            case 'd':
-                Arreglo4();
-                break;
+                default:
+                    System.out.println("Repita el Programa Correctamente");
 
-            case 'e':
-                Arreglo5();
-                break;
-
-            default:
-                System.out.println("Hasta Luego");
-
+                }
+            } catch (Exception e) {
+                System.out.println("Ingresa un Dato Correcto");
+            } finally {
+                System.out.println("\u00BFRepetir programa? Si lo desea escriba s");
             }
-
-            System.out.println("\u00BFDeseas repetir el programa? Si lo desea escriba s");
 
             letra = entrada.next().charAt(0);
 
         } while (letra == 's' || letra == 'S');
 
         // aqui se cierra el do
-        System.out.println("Gracias por ver este hermoso programa :3");
     }
 
     public void Arreglo1() {
