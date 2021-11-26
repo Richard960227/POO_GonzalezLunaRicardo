@@ -11,7 +11,7 @@ public class Ejercicios {
 
     Scanner entrada = new Scanner(System.in);
 
-    char op, letra;
+    char op;
 
     // estados propios de una clase
     // un metodo es una operacion o una accion que puede realizar una clase
@@ -204,6 +204,7 @@ public class Ejercicios {
          */
 
         int n;
+        char letra;
 
         do {
             System.out.println("Ingrese el numero de asteriscos que desea que tenga el cuadro: ");
@@ -261,31 +262,22 @@ public class Ejercicios {
          * 
          * 
          */
-        int n, m;
-
-        System.out.println("Ingrese N\u00famero de Filas");
+        int n;
+        System.out.println("Ingrese el numero del cuadro: ");
         n = entrada.nextInt();
-
-        System.out.println("Ingrese N\u00famero de Columnas");
-        m = entrada.nextInt();
-
-        if (n < 0 || n > 1000) {
-            System.out.println("El cuadro no acepta ni negativos ni mayores a 1000");
+        if (n < 0 || n > 100) {
+            System.out.println("El cuadro no acepta ni negativos ni mayores a 100");
         } else {
-            // aqui tengo las filas
+
             for (int i = 1; i <= n; i++) {
-                // columnas
-                for (int j = 0; j < m; j++) {
-                    System.out.print("/");
-                }
-                System.out.println();
-            }
-            for (int i = 1; i <= m; i++) {
-                // columnas
                 for (int j = 1; j <= n; j++) {
-                    System.out.print("*");
+                    if (i % 2 != 0) {
+                        System.out.print("/ ");
+                    } else {
+                        System.out.print("* ");
+                    }
                 }
-                System.out.println();
+                System.out.println(" ");
             }
         }
     }
