@@ -1,10 +1,10 @@
-public class Libro3 extends Costo {
+public class Libro4 extends Costo {
 
     int costo;
 
-    public Libro3() {
+    public Libro4() {
     }
-    public Libro3(String titulo, String autor, int isbn, int ejemplares, int costo) {
+    public Libro4(String titulo, String autor, int isbn, int ejemplares, int costo) {
         super(titulo, autor, isbn, ejemplares);
         this.costo = costo;
 
@@ -20,7 +20,7 @@ public class Libro3 extends Costo {
         this.costo = costo;
     }
 
-    public void mostrarLibro3() {
+    public void mostrarLibro4() {
         System.out.println("Titulo: " + getTitulo() + "\n" + "Autor: " + getAutor() + "\n"
                 + "ISBN: " + getISBN() + "\n" + "N. Ejemplares: " + getEjemplares() + "\n" + "Costo: " + costo + "\n");
     }

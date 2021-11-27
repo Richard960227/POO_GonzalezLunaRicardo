@@ -4,7 +4,7 @@ public class Libro1 extends Costo {
 
     public Libro1() {
     }
-    public Libro1(String titulo, String autor, int isbn, int ejemplares) {
+    public Libro1(String titulo, String autor, int isbn, int ejemplares, int costo) {
         super(titulo, autor, isbn, ejemplares);
         this.costo = costo;
 
@@ -16,17 +16,12 @@ public class Libro1 extends Costo {
     }
 
     // enviar
-    public void setLadrido(int costo) {
+    public void setCosto(int costo) {
         this.costo = costo;
     }
 
-    // metodo para mostra la informacion del Perro
-    public void mostrarPerro() {
+    public void mostrarLibro1() {
         System.out.println("Titulo: " + getTitulo() + "\n" + "Autor: " + getAutor() + "\n"
                 + "ISBN: " + getISBN() + "\n" + "N. Ejemplares: " + getEjemplares() + "\n" + "Costo: " + costo + "\n");
-    }
-	public void mostrarLibro1() {
-	}
-    public void setLibro1(Libro1 libro1) {
     }
 }

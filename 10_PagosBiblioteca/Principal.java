@@ -23,7 +23,7 @@ public class Principal {
         // ciclo para que el menu se repita y sea visible para el USUARIO
         do {
             mainp.MenuP();
-            text = JOptionPane.showInputDialog("En caso de que desee regresar al menu principal digite 1");
+            text = JOptionPane.showInputDialog("En caso de que desee regresar al menu principal digite  1  ");
             opciones = Integer.parseInt(text);
 
         } while (opciones == 1);
