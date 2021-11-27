@@ -1,12 +1,3 @@
-/* 
- *
- * Vamos a realizar un programa mediante el cual el usuario pueda gestionar
- * los pagos de los libros atrasados de la biblioteca
- * 
- */
-
-
-//libreria
 
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -51,8 +42,10 @@ public class Principal {
         try {
             // es para ingresar texto
             text = JOptionPane.showInputDialog(
-                    "Selecciones el programa a ejecutar de la siguiente lista:" + "\n 1.-Consultar el Sueldo Personal."
-                            + "\n 2.-Costos y Proveedores." + "\n 3.- Prestamo y Devolucion de libros");
+                    "Selecciones el programa a ejecutar de la siguiente lista:" 
+                    + "\n 1.-Consultar el Sueldo Personal."
+                    + "\n 2.-Costos y Proveedores." 
+                    + "\n 3.- Prestamo y Devolucion de libros");
             // cuando se utiliza JOptionPane solo se reciben cadenas
             // voy a convertir esa cadena en un entero
             opciones = Integer.parseInt(text);
@@ -69,19 +62,39 @@ public class Principal {
         switch (opciones) {
         case 1:
             // metodo
+            SueldoEmpleado();
             break;
 
         case 2:
             // metodo
+            Proveedores();
+
             break;
 
         case 3:
             // metodo
+            Biblioteca();
+
             break;
 
         default:
             JOptionPane.showMessageDialog(null, "Vuelva Pronto");
             break;
         }
+    }
+
+    private void SueldoEmpleado() {
+        SueldoEmpleado objempleado = new SueldoEmpleado();
+        objempleado.Menu();
+    }
+
+    private void Proveedores() {
+        Proveedores objproveedores = new Proveedores();
+        objproveedores.MenuProveedores();
+    }
+
+    private void Biblioteca() {
+        Biblioteca objbiblioteca = new Biblioteca();
+        objbiblioteca.Libros();
     }
 }
