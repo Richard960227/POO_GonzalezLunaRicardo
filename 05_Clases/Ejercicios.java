@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Ejercicios {
 
-    /**
+    /*
      * Vamos a hacer un ejemplo donde tengamos un menu con 4 opciones: 1. es una
      * calculadorq 2. conversionde unidades 3. creacion de cuadros 4. movimiento en
      * cuadros
@@ -242,8 +242,6 @@ public class Ejercicios {
     }
 
     public void Ejercicio4() {
-
-        //
 
         /*
          * Quiero que se imprima una figura de la siguiente forma:

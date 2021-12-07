@@ -20,6 +20,7 @@ public class VentanaJ extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("HOLA MUNDO");
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
