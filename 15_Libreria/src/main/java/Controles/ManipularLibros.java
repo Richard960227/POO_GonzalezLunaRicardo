@@ -48,9 +48,8 @@ public class ManipularLibros implements Serializable {
             objlibro.aceptarDatos();
             //lo agrego al array
             listadelibros.add(objlibro);
-            System.out.println("¿Deseas agregar otro libro?");
+            System.out.println("\n" + "¿Deseas Agregar Otro Libro?");
             resp = entrada.next().charAt(0);
-
         }
     }
     
@@ -60,16 +59,16 @@ public class ManipularLibros implements Serializable {
         //si hay libros
         //y si la lista esta vacia que hago
         if(listadelibros.isEmpty()){
-            System.out.println("No hay libros agregados");
+            System.out.println("\n" + "No Hay Libros Agregados");
         }else{
             //no esta vacia
-            System.out.println("Los libros son: ");
+            System.out.println("\n" + "Los Libros son: \n");
             //recorrer la lista de los libros
             for(int i = 0; i < listadelibros.size(); i++){
-                //System.out.println("El ID del Libro: " + listadelibros.get(i));
-                System.out.println("Nombre del Libro: " + listadelibros.get(i).getNombre() + "\n");
-                System.out.println("Autor del Libro: " + listadelibros.get(i).getAutor() + "\n");
-                System.out.println("Editorial del Libro: " + listadelibros.get(i).getEditorial() + "\n");
+                System.out.println("ID del Libro: " + listadelibros.get(i));
+                System.out.println("Nombre del Libro: " + listadelibros.get(i).getNombre());
+                System.out.println("Autor del Libro: " + listadelibros.get(i).getAutor());
+                System.out.println("Editorial del Libro: " + listadelibros.get(i).getEditorial());
                 System.out.println("Precio del Libro: " + listadelibros.get(i).getPrecio() + "\n");
             }
         }
@@ -89,12 +88,12 @@ public class ManipularLibros implements Serializable {
                 pos = i;
                 existe = true;
             }else{
-                System.out.println("Libro no encontrado. Favor de ponerse en contacto con el administrador");
+                System.out.println("\n" + "Libro No Encontrado. Favor de Ponerse en Contacto con el Administrador");
             }
         }
         if(!existe){
             //porque esta fuera el arreglo o la lista osea no existe
-            System.out.println("No existe registro del Libro");
+            System.out.println("\n" + "No Existe Registro del Libro");
             pos = -1;
         }
         return pos;
@@ -107,13 +106,13 @@ public class ManipularLibros implements Serializable {
         String nombreBuscar;
         Scanner entrada = new Scanner(System.in);
         
-        System.out.println("Ingresa el Nombre del Libro que desea buscar");
+        System.out.println("\n" + "Ingresa el Nombre del Libro que Desea Buscar");
         nombreBuscar = entrada.nextLine();
         
         posbuscar = traePosicion(nombreBuscar);
         
         //visualizo los datos
-        System.out.println("Nombre del Libro: " + listadelibros.get(posbuscar).getNombre());
+        System.out.println("\n" + "Nombre del Libro: " + listadelibros.get(posbuscar).getNombre());
         System.out.println("Autor del Libro: " + listadelibros.get(posbuscar).getAutor());
         System.out.println("Editorial del Libro: " + listadelibros.get(posbuscar).getEditorial());
         System.out.println("Precio del Libro: " + listadelibros.get(posbuscar).getPrecio());
@@ -128,22 +127,27 @@ public class ManipularLibros implements Serializable {
         String libroborrar;
         int posborrar;
         
-        //verificar que lista de libros no este vacia
+        try{
+           //verificar que lista de libros no este vacia
         if(listadelibros.isEmpty()){
-            System.out.println("No hay libros registrados");
+            System.out.println("\n" + "No Hay Libros Registrados");
         }else{
-            System.out.println("Ingresa el ID del libro que vas a eliminar");
+            System.out.println("\n" + "Buscar y Eliminar");
             posborrar = buscar();
             
             if(posborrar < listadelibros.size()){
                 //si esta dentro de la lista
                 listadelibros.remove(posborrar);
-                System.out.println("Libro eliminado");
+                System.out.println("\n" + "Libro Eliminado");
             }else{
                 //esta afuera del rango
-                System.out.println("Imposible eliminar ese registro");
+                System.out.println("\n" + "Imposible Eliminar ese Registro");
             }
+        } 
+        }catch (Exception obj){
+            System.out.println("");
         }
+        
     }
     
     //modificar
@@ -154,64 +158,60 @@ public class ManipularLibros implements Serializable {
         int posmodificar = 0;
         int resmod = 0;
         String modificar;
-        String opcion = "s";
+        char resp = 's';
         
         Scanner entrada = new Scanner(System.in);
         
-        System.out.println("Ingresa el nombre del libro que deseas modificar: ");
+        System.out.println("\n" + "Ingresa el Nombre del Libro que Deseas Modificar: ");
         modificar = entrada.nextLine();
         
-        while("s".equalsIgnoreCase(opcion)){
+        while (resp == 's'){
             posmodificar = traePosicion(modificar);
             
             //ya se obtuvieron los datos
-            System.out.println("¿Que dato deseas modificar del libro?"
+            System.out.println("\n" + "¿Que Dato Deseas Modificar del Libro?"
                                 + "\n 1.- Autor."
                                 + "\n 2.- Editorial"
-                                + "\n 3.- Precio"
-                                + "\n");
+                                + "\n 3.- Precio");
             
             resmod = entrada.nextInt();
             
             switch (resmod) {
                 case 1:
                     //autor
-                    System.out.println("El autor es: ");
-                    System.out.println("Autor: " + listadelibros.get(posmodificar).getAutor());
-                    System.out.println("Ingresa el nuevo autor");
+                    System.out.println("\n" + "Autor: " + listadelibros.get(posmodificar).getAutor());
+                    System.out.println("Ingresa el Nuevo Autor");
                     listadelibros.get(posmodificar).setAutor(entrada.next());
-                    System.out.println("El dato a sido modificado");
-                    System.out.println("Autor: " + listadelibros.get(posmodificar).getEditorial());
+                    System.out.println("El Dato a Sido Modificado");
+                    System.out.println("Autor: " + listadelibros.get(posmodificar).getAutor());
                     
                     break;
                     
                 case 2:
                     //editorial
-                    System.out.println("La editorial es: ");
-                    System.out.println("Editorial: " + listadelibros.get(posmodificar).getEditorial());
-                    System.out.println("Ingresa la nueva editorial");
+                    System.out.println("\n" + "Editorial: " + listadelibros.get(posmodificar).getEditorial());
+                    System.out.println("Ingresa la Nueva Editorial");
                     listadelibros.get(posmodificar).setEditorial(entrada.next());
-                    System.out.println("El dato a sido modificado");
+                    System.out.println("El Dato a Sido Modificado");
                     System.out.println("Editorial: " + listadelibros.get(posmodificar).getEditorial());
                     
                     break;
                     
                 case 3:
                     //precio
-                    System.out.println("El precio es: ");
-                    System.out.println("Precio: " + listadelibros.get(posmodificar).getPrecio());
-                    System.out.println("Ingresa el nuevo precio");
+                    System.out.println("\n" + "Precio: " + listadelibros.get(posmodificar).getPrecio());
+                    System.out.println("Ingresa el Nuevo Precio");
                     listadelibros.get(posmodificar).setPrecio(entrada.nextFloat());
-                    System.out.println("El dato a sido modificado");
+                    System.out.println("El Dato a Sido Modificado");
                     System.out.println("Precio: " + listadelibros.get(posmodificar).getPrecio());
                     
                     break;
                     
                 default:
-                    System.out.println("Opcion no valida");   
+                    System.out.println("\n" + "Opcion Invalida");   
             }
-            System.out.println("¿Quieres cambiar algun otro dato? s/n");
-            opcion = entrada.nextLine();
+            System.out.println("\n" + "¿Quieres Cambiar Algun Otro Dato? s/n");
+            resp = entrada.next().charAt(0);
         }
     }
     

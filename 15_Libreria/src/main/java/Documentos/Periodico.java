@@ -11,27 +11,30 @@ package Documentos;
 import java.util.*;
 
 public class Periodico extends CLibro {
-
+    
     //fecha de publicacion
+    
     private Date fecha = new Date();
     private String fecha2;
-
-    public Periodico() {
-
+    
+    public Periodico(){
+    
     }
-
+    
     public Periodico(String nombre, String autor, String editorial, float precio) {
         super(nombre, autor, editorial, precio);
         this.fecha2 = fecha2;
     }
-
-    public void agregarPeriodico() {
+    
+    
+    
+    public void agregarPeriodico(){
         //primero necesito jalar el metodo de aceptar datos y despues agregar
         //el tipo de revista
         CLibro datoslibro = new CLibro();
-
+        
         Scanner entrada = new Scanner(System.in);
-
+        
         datoslibro.aceptarDatos(); //tdos los datos del documento
         System.out.println("Ingresa la fecha de publicacion");
         fecha2 = entrada.nextLine();
@@ -45,35 +48,25 @@ public class Periodico extends CLibro {
         /*System.out.println("Año: " + fecha.getYear());
         System.out.println("Mes: " + fecha.getMonth());
         System.out.println("Dia: " + fecha.getDay());
-         */
+        */
     }
 
-    /**
-     * @return the fecha
-     */
     public Date getFecha() {
         return fecha;
     }
 
-    /**
-     * @param fecha the fecha to set
-     */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    /**
-     * @return the fecha2
-     */
     public String getFecha2() {
         return fecha2;
     }
 
-    /**
-     * @param fecha2 the fecha2 to set
-     */
     public void setFecha2(String fecha2) {
         this.fecha2 = fecha2;
     }
-
+    
+    
+    
 }
