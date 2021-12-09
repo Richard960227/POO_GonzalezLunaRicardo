@@ -43,6 +43,7 @@ public class ManipularRevistas implements Serializable {
         while (resp == 's') {
             //hago un objeto de Revista y mando a llamar el metodo de los datos
             Revista objrevista = new Revista();
+            objrevista.aceptarDatos();
             objrevista.agregarRevista();
             //lo agrego al array
             listaderevistas.add(objrevista);
@@ -133,7 +134,7 @@ public class ManipularRevistas implements Serializable {
             if (listaderevistas.isEmpty()) {
                 System.out.println("\n" + "No Hay Revistas Registradas");
             } else {
-                System.out.println("\n" + "Ingresa ID de la Revista a Eliminar");
+                System.out.println("\n" + "Buscar y Eliminar");
                 posborrar = buscar();
 
                 if (posborrar < listaderevistas.size()) {
@@ -158,14 +159,14 @@ public class ManipularRevistas implements Serializable {
         int posmodificar = 0;
         int resmod = 0;
         String modificar;
-        String opcion = "s";
+        char resp = 's';
 
         Scanner entrada = new Scanner(System.in);
 
         System.out.println("\n" + "Ingresa Nombre de la Revista que Deseas Modificar: ");
         modificar = entrada.nextLine();
 
-        while ("s".equalsIgnoreCase(opcion)) {
+        while (resp == 's'){
             posmodificar = traePosicion(modificar);
 
             //ya se obtuvieron los datos
@@ -215,7 +216,7 @@ public class ManipularRevistas implements Serializable {
                     //fecha
                     System.out.println("\n" + "El Tipo es: ");
                     System.out.println("Tipo: " + listaderevistas.get(posmodificar).getTipo_revista());
-                    System.out.println("Ingresa la Nueva Fecha");
+                    System.out.println("Ingresa el Nuevo Tipo");
                     listaderevistas.get(posmodificar).setTipo_revista(entrada.next());
                     System.out.println("El Dato a Sido Modificado");
                     System.out.println("Tipo: " + listaderevistas.get(posmodificar).getTipo_revista());
@@ -224,7 +225,7 @@ public class ManipularRevistas implements Serializable {
                     System.out.println("\n" + "Opcion Invalida");
             }
             System.out.println("\n" + "¿Quieres Cambiar Algun Otro Dato? s/n");
-            opcion = entrada.nextLine();
+            resp = entrada.next().charAt(0);
         }
     }
 

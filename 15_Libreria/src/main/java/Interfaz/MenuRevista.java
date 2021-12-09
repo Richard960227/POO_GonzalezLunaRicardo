@@ -9,7 +9,6 @@ package Interfaz;
  * @author dears
  */
 import Controles.ManipularRevistas;
-import java.io.*;
 import java.util.*;
 
 public class MenuRevista {

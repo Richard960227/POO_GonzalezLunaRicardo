@@ -87,7 +87,7 @@ public class ManipularLibros implements Serializable {
                 //si lo encuentra
                 pos = i;
                 existe = true;
-            }else{
+            }else if (!existe){
                 System.out.println("\n" + "Libro No Encontrado. Favor de Ponerse en Contacto con el Administrador");
             }
         }

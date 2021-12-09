@@ -9,7 +9,6 @@ package Interfaz;
  * @author dears
  */
 import Controles.ManipularPeriodicos;
-import java.io.*;
 import java.util.*;
 
 public class MenuPeriodico {

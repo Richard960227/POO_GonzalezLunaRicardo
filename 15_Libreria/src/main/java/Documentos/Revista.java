@@ -41,12 +41,9 @@ public class Revista extends CLibro{
     public void agregarRevista(){
         //primero necesito jalar el metodo de aceptar datos y despues agregar
         //el tipo de revista
-        CLibro datoslibro = new CLibro();
-        
         Scanner entrada = new Scanner(System.in);
         
-        datoslibro.aceptarDatos(); //tdos los datos del documento
-        System.out.println("Ingresa el tipo de revista");
+        System.out.println("Ingresa Tipo de Revista");
         tipo_revista = entrada.nextLine();
     }
    

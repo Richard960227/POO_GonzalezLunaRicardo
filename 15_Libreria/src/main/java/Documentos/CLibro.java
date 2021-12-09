@@ -87,14 +87,19 @@ public class CLibro {
 
     public void aceptarDatos() {
 
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("\n" + "Ingresa el Nombre");
-        nombre = entrada.nextLine();
-        System.out.println("Ingresa el Nombre del Autor");
-        autor = entrada.nextLine();
-        System.out.println("Ingresa la Editorial");
-        editorial = entrada.nextLine();
-        System.out.println("Ingresa el Precio");
-        precio = entrada.nextFloat();
+        try {
+            Scanner entrada = new Scanner(System.in);
+            System.out.println("\n" + "Ingresa el Nombre");
+            nombre = entrada.nextLine();
+            System.out.println("Ingresa el Nombre del Autor");
+            autor = entrada.nextLine();
+            System.out.println("Ingresa la Editorial");
+            editorial = entrada.nextLine();
+            System.out.println("Ingresa el Precio");
+            precio = entrada.nextFloat();
+        } catch (Exception e) {
+            System.out.println("\n" + "Error en Dato");
+        }
+
     }
 }

@@ -43,6 +43,7 @@ public class ManipularPeriodicos implements Serializable {
         while (resp == 's') {
             //hago un objeto de CLibro y mando a llamar el metodo de los datos
             Periodico objperiodico = new Periodico();
+            objperiodico.aceptarDatos();
             objperiodico.agregarPeriodico();
             //lo agrego al array
             listadeperiodicos.add(objperiodico);
@@ -87,7 +88,7 @@ public class ManipularPeriodicos implements Serializable {
                 //si lo encuentra
                 pos = i;
                 existe = true;
-            } else if (!existe) {
+            } else if (!existe){
                 System.out.println("\n" + "Periodico No Encontrado. Favor de Ponerse en Contacto con el Administrador");
             }
         }
@@ -133,7 +134,7 @@ public class ManipularPeriodicos implements Serializable {
             if (listadeperiodicos.isEmpty()) {
                 System.out.println("\n" + "No Hay Periodicos Registrados");
             } else {
-                System.out.println("\n" + "Ingresa ID del Periodico a Eliminar");
+                System.out.println("\n" + "Buscar y Eliminar");
                 posborrar = buscar();
 
                 if (posborrar < listadeperiodicos.size()) {
@@ -158,14 +159,14 @@ public class ManipularPeriodicos implements Serializable {
         int posmodificar = 0;
         int resmod = 0;
         String modificar;
-        String opcion = "s";
+        char resp = 's';
 
         Scanner entrada = new Scanner(System.in);
 
         System.out.println("\n" + "Ingresa el Nombre del Periodico que Deseas Modificar: ");
         modificar = entrada.nextLine();
 
-        while ("s".equalsIgnoreCase(opcion)) {
+        while (resp == 's'){
             posmodificar = traePosicion(modificar);
 
             //ya se obtuvieron los datos
@@ -224,7 +225,7 @@ public class ManipularPeriodicos implements Serializable {
                     System.out.println("\n" + "Opcion Invalida");
             }
             System.out.println("\n" + "¿Quieres Cambiar Algun Otro Dato? s/n");
-            opcion = entrada.nextLine();
+            resp = entrada.next().charAt(0);
         }
     }
 

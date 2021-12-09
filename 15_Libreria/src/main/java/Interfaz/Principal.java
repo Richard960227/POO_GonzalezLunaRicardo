@@ -8,7 +8,6 @@ package Interfaz;
  *
  * @author dears
  */
-import java.io.*;
 import java.util.*;
 
 
@@ -24,7 +23,7 @@ public class Principal{
 
         do {
 
-            System.out.println("*******************************************************"
+            System.out.println("\n" + "*******************************************************"
                     + "\n Universidad Tres Culturas"
                     + "\n &"
                     + "\n González Luna Ricardo"
