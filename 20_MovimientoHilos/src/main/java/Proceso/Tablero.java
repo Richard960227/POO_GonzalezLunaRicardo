@@ -43,13 +43,14 @@ public class Tablero extends JPanel implements Runnable{
         hilo.start();
    }
     
-    void tortuga(){
+    public void tortuga(){
         //es para cargar la imagen de la tortuga
         tortuga = new ImageIcon(this.getClass().getResource("img/tortuga.png")).getImage();
         
         
     }
-    void liebre(){
+    
+    public void liebre(){
          //es para cargar la imagen de la liebre
         liebre = new ImageIcon(this.getClass().getResource("img/liebre.png")).getImage();
        
