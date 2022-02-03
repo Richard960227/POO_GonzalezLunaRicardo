@@ -167,8 +167,8 @@ public class Registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarMouseClicked
-
-        
+        Usuarios conexion= new Usuarios();
+        conexion.Grabar(usertext.getText().toString());
     }//GEN-LAST:event_registrarMouseClicked
 
     private void cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarMouseClicked
