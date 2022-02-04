@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario/Estilo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script language="javascript" type="text/javascript" src="js/validarformulario.js"></script>
+</head>
+
+<body>
+    <nav class="formulario">
+        <form method="post" name="registro" onSubmit="return validar(this)" action="" id="form">
+            <div class="form">
+                <h1 id="contacto">CONTACTO</h1>
+                <div class="grupo">
+                    <input type="text" name="nombre" id="nombre" required><span class="barra"></span>
+                    <div class="campo">Nombre</div>
+                </div>
+                <div class="grupo">
+                    <input type="email" name="correo" id="correo" required><span class="barra"></span>
+                    <div class="campo">Correo Electronico</div>
+                </div>
+                <div class="grupo">
+                    <input type="tel" name="telefono" id="telefono" required><span class="barra"></span>
+                    <div class="campo">Telefono</div>
+                </div>
+                <br>
+                <button type="submit" id="enviardatos" name="enviardatos">Enviar Datos</button>
+                <button type="reset" id="borrar" name="borrar">Borrar Datos</button>
+            </div>
+        </form>
+    </nav>
+</body>
+
+</html>
