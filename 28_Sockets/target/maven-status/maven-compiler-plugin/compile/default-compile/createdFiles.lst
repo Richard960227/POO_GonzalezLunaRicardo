@@ -1,0 +1,6 @@
+com\mycompany\_sockets\Escribir.class
+com\mycompany\_sockets\Servidor.class
+com\mycompany\_sockets\Leer.class
+com\mycompany\_sockets\AtenderClientes.class
+com\mycompany\_sockets\Cliente.class
+com\mycompany\_sockets\Hilos.class
