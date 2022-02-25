@@ -63,7 +63,7 @@ public class VerificarUsuario extends HttpServlet {
                 sesion.setAttribute("empleado", emp);
                 
                 HttpSession sesionok = request.getSession();
-                sesionok.setAttribute("rol", usuario);
+                sesionok.setAttribute("name", usuario);
                 if(emp.getId_rol()==1){
                     //es el dueño
                     response.sendRedirect("Dueno.jsp");
