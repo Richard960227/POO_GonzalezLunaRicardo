@@ -14,7 +14,7 @@ public class Conexion {
 
     public static Connection getConexion() throws ClassNotFoundException{
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/funkos";
             String user = "root";
             String password = "759213";

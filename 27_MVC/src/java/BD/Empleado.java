@@ -5,12 +5,13 @@
 package BD;
 
 import java.sql.*;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  *
  * @author dears
  */
+
 public class Empleado {
 
     private int id_employee;
@@ -75,8 +76,8 @@ public class Empleado {
 //Registra
 //Modifica sus Datos
 //Consulta todos los empleados
-    public Vector<Empleado> listarEmpleados() throws ClassNotFoundException {
-        Vector<Empleado> listaempleados = new Vector<Empleado>();
+    public ArrayList<Empleado> listarEmpleados() throws ClassNotFoundException {
+        ArrayList<Empleado> listaempleados = new ArrayList<Empleado>();
         Connection con = null;
         PreparedStatement pre = null;
         ResultSet rs = null;
@@ -88,13 +89,15 @@ public class Empleado {
             rs = pre.executeQuery();
             while (rs.next()) {
                 Empleado emp = new Empleado();
-                emp.setId_employee(rs.getInt("id_empleado"));
+                emp.setId_employee(rs.getInt("id_employee"));
                 emp.setName(rs.getString("name"));
                 emp.setUser(rs.getString("user"));
                 emp.setPass(rs.getString("pass"));
                 emp.setId_rol(rs.getInt("id_rol"));
                 emp.setName_rol(rs.getString("name_rol"));
                 listaempleados.add(emp);
+                System.out.println(emp.id_employee);
+                System.out.println(emp.getName());
             }
         } catch (SQLException ed) {
             System.out.println("Error al Consultar la Tabla Empleado");
@@ -113,6 +116,7 @@ public class Empleado {
         }
         return listaempleados;
     }
+
 
 //Verificar tipo de usuario
     public Empleado verificacionUsuario(String usuario, String password) throws ClassNotFoundException {

@@ -60,7 +60,7 @@ public class VerificarUsuario extends HttpServlet {
             if(emp!=null){
                 //vamos a crear la sesion del usuario
                 HttpSession sesion = request.getSession(true);
-                sesion.setAttribute("empleado", emp);
+                sesion.setAttribute("id_empleado", emp);
                 
                 HttpSession sesionok = request.getSession();
                 sesionok.setAttribute("name", usuario);

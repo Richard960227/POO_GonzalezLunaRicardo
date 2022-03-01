@@ -10,8 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="CSS/Style.css"/>
     </head>
-    <body>
-        <h1>Hello World! Boss</h1>
+    <body background="IMG/fondo.png">
+        <img src="IMG/volver.png" type="button" onclick="history.back()" name="btnback" class="back"/>
+        <h1>You are a Customer</h1>
     </body>
 </html>

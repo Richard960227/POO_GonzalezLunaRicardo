@@ -5,36 +5,35 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Monster Store S.A. de C.V.</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="IMG/monster.png">
+        <link rel="stylesheet" href="CSS/Style.css"/>
+        <script src="JS/Animation.js" ></script>  
     </head>
-    <body>
-        
-        <table class="tablellogin">
-            <tr align="center" bgcolor="#ff000000">
-                <th colspan="2"><span class="tableencabezado">Login</span></th>
-            </tr>
-            <tr>
-                <td width="180px"><img src="IMG/ojo.png" width="150" height="135"></td>
-                <td width="625px"></td>
-            </tr>
+    <body background="IMG/fondo.png">
+
+        <div class="mobile-screen">
+            <div class="header">
+                <h1>Log in</h1>
+            </div>
+
+            <div id="login-button">
+                <img src="IMG/monster.png">
+            </div>
+
             <form method="post" name="formulario" action="VerificarUsuario">
-                <table class="tldatos">
-                    <tr>
-                        <td width="131">User</td>
-                        <td width="131"><input type="text" name="txtUser" id="txtUser"></td>
-                    </tr>
-                    <tr>
-                        <td width="131">Password</td>
-                        <td width="131"><input type="password" name="txtPassword" id="txtPassword"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit" name="btngetin" value="Get in"></td>
-                    </tr>
-                </table>
+                <input type="text" name="txtUser" placeholder="User">
+                <input type="password" name="txtPassword" placeholder="Password">
+                <input type="submit" name="btngetin" value="Get in" class="login-btn">
             </form>
-        </table>
+            
+            <div class="footer">
+                <img src="IMG/editar.png" name="btnback" class="editar"/>
+            </div>
+            
+        </div>
+
     </body>
 </html>

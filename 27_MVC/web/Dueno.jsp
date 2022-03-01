@@ -8,46 +8,49 @@
 <%@page import="java.util.*" %>
 <%@page import="BD.*" %>
 
-<%@page session="true" %>
+<%@page session= "true" %>
 
 <%
     String usuario = "";
     HttpSession sesionok = request.getSession(true);
-    
-    if(sesionok.getAttribute("empleado") == null){
-        %>
-        
-        <jsp:forward page="index.html">
-            <jsp:param name="Error" value="Es Obligatorio Autenticarse"/>
-        </jsp:forward>
-        
-        <%
-    }else{
-        usuario = (String)sesionok.getAttribute("name");
-    %>
+
+    if (sesionok.getAttribute("id_empleado") == null) {
+%>
+
+<jsp:forward page="index.html">
+    <jsp:param name="Error" value="Es Obligatorio Autenticarse"/>
+</jsp:forward>
+
+<%
+} else {
+    usuario = (String) sesionok.getAttribute("name");
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Solo el Master</title>
+        <title>Monster Store S.A. de C.V.</title>
+        <link rel="icon" href="IMG/monster.png">
+        <link rel="stylesheet" href="CSS/Style.css"/>
     </head>
-    <body>
-        <h1>Bienvenido: <%=usuario %> </h1>
+    <body background="IMG/fondo.png">
+        <img src="IMG/volver.png" type="button" onclick="history.back()" name="btnback" class="back"/>
+        <h1>Welcome Master <%=usuario%> </h1>
         <br>
-        <h1>Tabla de Empleados de la Tienda Funkos</h1>
+        <h1>Funkos Store Employee Chart</h1>
         <br>
-        <% Vector<Empleado>listaempleados = new Vector<Empleado>(); %>
+        <% ArrayList<Empleado> listaempleados = new ArrayList<Empleado>(); %>
         <div class="tabla_usuarios">
             <table border="1" class="tabla_empleados">
                 <tr>
-                    <th>Id Empleado</th>
-                    <th>Nombre</th>
+                    <th>Id Employee</th>
+                    <th>Name</th>
                     <th>User</th>
                     <th>Password</th>
                     <th>Rol</th>
                 </tr>
                 <tr>
-                    <% for(Empleado emp : listaempleados){%>
+                    <% for (Empleado emp : listaempleados) {%>
                     <td><%=emp.getId_employee() %> </td>
                     <td><%=emp.getName()%></td>
                     <td><%=emp.getUser()%></td>
@@ -56,7 +59,7 @@
                 </tr>
                 <% } %>
 
-                
+
             </table>
         </div>
     </body>

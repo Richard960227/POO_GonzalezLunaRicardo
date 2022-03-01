@@ -1,0 +1,151 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 26/02/2022, 12:03:59 PM
+    Author     : dears
+*/
+
+body{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Patrick Hand', cursive;
+}
+
+.mobile-screen{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    height: 500px;
+    background: rgba(3,3,3,.6);
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.header{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+
+.footer {
+    margin: 0;
+    padding: 0;
+    padding-top: 230px;
+    padding-left: 250px;
+    width: 100%;
+    height: 0%;
+}
+
+.editar{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.back {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+h1{
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: 300;
+    font-size: 21px;
+    color: rgba(255,255,255,.8);
+}
+
+form{
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+}
+
+input,
+.login-btn{
+    position: relative;
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 84%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+input, table{
+    border: none;
+    border-left: 5px solid;
+    background: none;
+    border-color: rgb(210,39,48);
+    color: #fff;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: 'Patrick Hand', cursive;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+input:focus{
+    outline: 0;
+    background: rgba(225, 40, 54,.2);
+    border-radius: 20px;
+    border-color: transparent;
+}
+
+.login-btn{
+    border-radius: 4px;
+    text-align: center;
+    background: rgb(210,39,48);
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/* Change colors container */
+.change-colors-container{
+    position: absolute;
+    height: 300px;
+    width: 50px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(255,255,255,.5);
+}
+
+
+#login-button{
+    margin: auto;
+    margin-top: 25px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(3,3,3,.8);
+    overflow: hidden;
+    opacity: 0.6;
+    box-shadow: 10px 10px 30px #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-button>img{
+    width: 100px;
+    height: 100px;
+}
+
