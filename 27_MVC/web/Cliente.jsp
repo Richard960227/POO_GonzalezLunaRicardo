@@ -14,6 +14,6 @@
     </head>
     <body background="IMG/fondo.png">
         <img src="IMG/volver.png" type="button" onclick="history.back()" name="btnback" class="back"/>
-        <h1>You are a Customer</h1>
+        <h1>Cash Register</h1>
     </body>
 </html>

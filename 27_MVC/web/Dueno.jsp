@@ -14,7 +14,7 @@
     String usuario = "";
     HttpSession sesionok = request.getSession(true);
 
-    if (sesionok.getAttribute("id_empleado") == null) {
+    if (sesionok.getAttribute("empleado") == null) {
 %>
 
 <jsp:forward page="index.html">
@@ -37,30 +37,41 @@
         <img src="IMG/volver.png" type="button" onclick="history.back()" name="btnback" class="back"/>
         <h1>Welcome Master <%=usuario%> </h1>
         <br>
-        <h1>Funkos Store Employee Chart</h1>
-        <br>
-        <% ArrayList<Empleado> listaempleados = new ArrayList<Empleado>(); %>
+        <% ArrayList<Empleado> listarEmpleados = new Empleado().listarEmpleados(); %>
         <div class="tabla_usuarios">
             <table border="1" class="tabla_empleados">
+                <thead>
+                    <h1>Funkos Store Employee Chart</h1>
+                </thead>
                 <tr>
                     <th>Id Employee</th>
                     <th>Name</th>
                     <th>User</th>
                     <th>Password</th>
                     <th>Rol</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
                 <tr>
-                    <% for (Empleado emp : listaempleados) {%>
-                    <td><%=emp.getId_employee() %> </td>
+                    <% for (Empleado emp : listarEmpleados) {%>
+                    <td><%=emp.getId_employee()%> </td>
                     <td><%=emp.getName()%></td>
                     <td><%=emp.getUser()%></td>
                     <td><%=emp.getPass()%></td>
                     <td><%=emp.getName_rol()%></td>
+                <form method="post" name="formulario" action="EditarUsuario">
+                    <td><img src="IMG/editar.png" name="btnback" class="editar"/></td>
+                </form>
+                <form method="post" name="formulario" action="EliminarUsuario">
+                    <td><img src="IMG/eliminar.png" name="btnback" class="eliminar"/></td>
+                </form>
+                    
                 </tr>
                 <% } %>
 
 
             </table>
+
         </div>
     </body>
     <%}%>

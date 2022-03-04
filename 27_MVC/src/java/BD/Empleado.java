@@ -168,4 +168,40 @@ public class Empleado {
         }
         return emp;
     }
+
+public Empleado eliminarEmpleado(int id_employee) throws ClassNotFoundException {
+        Empleado emp = null;
+        String msj=null;
+        Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet rs = null;
+        con = Conexion.getConexion();
+        String q = "DELETE FROM usuarios WHERE id_employee= " + id_employee;
+        try {
+
+            /*Tengo que comparar el nombre de usuario y password respecto de la bd, 
+            si coincide accede sino manda un mensaje de error en las credenciales
+             */
+            //primero me debo de conectar a la bd
+            
+            pre = con.prepareStatement(q);
+            pre.executeUpdate();
+     
+
+        } catch (SQLException ed) {
+            System.out.println("Error al Conectar la Tabla Empleado");
+            System.out.println(ed.getMessage());
+ 
+        } finally {
+            try {
+                //cerrar todas las conexiones por seguridad
+                pre.close();
+            } catch (Exception e) {
+                System.out.println("Error de Logica de Datos");
+                System.out.println(e.getMessage());
+            }
+        }
+        return emp;
+    }
+
 }

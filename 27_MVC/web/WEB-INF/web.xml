@@ -8,6 +8,14 @@
         <servlet-name>VerificarUsuario</servlet-name>
         <servlet-class>Controlador.VerificarUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarUsuario</servlet-name>
+        <servlet-class>Controlador.EliminarUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarUsuario</servlet-name>
+        <servlet-class>Controlador.EditarUsuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ejemplo</servlet-name>
         <url-pattern>/ejemplo</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>VerificarUsuario</servlet-name>
         <url-pattern>/VerificarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarUsuario</servlet-name>
+        <url-pattern>/EliminarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarUsuario</servlet-name>
+        <url-pattern>/EditarUsuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
