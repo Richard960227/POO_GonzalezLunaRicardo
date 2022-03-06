@@ -4,8 +4,8 @@
  */
 package BD;
 
+import Controlador.Conexion;
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  *
@@ -14,22 +14,21 @@ import java.util.ArrayList;
 
 public class Empleado {
 
-    private int id_employee;
+    private int id;
     private String name;
     private String user;
     private String pass;
-    private int id_rol;
     private String name_rol;
 
     public Empleado() {
     }
 
-    public int getId_employee() {
-        return id_employee;
+    public int getId() {
+        return id;
     }
 
-    public void setId_employee(int id_employee) {
-        this.id_employee = id_employee;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -56,14 +55,6 @@ public class Empleado {
         this.pass = pass;
     }
 
-    public int getId_rol() {
-        return id_rol;
-    }
-
-    public void setId_rol(int id_rol) {
-        this.id_rol = id_rol;
-    }
-
     public String getName_rol() {
         return name_rol;
     }
@@ -71,52 +62,6 @@ public class Empleado {
     public void setName_rol(String name_rol) {
         this.name_rol = name_rol;
     }
-
-//cuales son las funciones del usuario?
-//Registra
-//Modifica sus Datos
-//Consulta todos los empleados
-    public ArrayList<Empleado> listarEmpleados() throws ClassNotFoundException {
-        ArrayList<Empleado> listaempleados = new ArrayList<Empleado>();
-        Connection con = null;
-        PreparedStatement pre = null;
-        ResultSet rs = null;
-
-        try {
-            con = Conexion.getConexion();
-            String q = "Select * from empleado";
-            pre = con.prepareStatement(q);
-            rs = pre.executeQuery();
-            while (rs.next()) {
-                Empleado emp = new Empleado();
-                emp.setId_employee(rs.getInt("id_employee"));
-                emp.setName(rs.getString("name"));
-                emp.setUser(rs.getString("user"));
-                emp.setPass(rs.getString("pass"));
-                emp.setId_rol(rs.getInt("id_rol"));
-                emp.setName_rol(rs.getString("name_rol"));
-                listaempleados.add(emp);
-                System.out.println(emp.id_employee);
-                System.out.println(emp.getName());
-            }
-        } catch (SQLException ed) {
-            System.out.println("Error al Consultar la Tabla Empleado");
-            System.out.println(ed.getMessage());
-            listaempleados = null;
-        } finally {
-            try {
-                //cerrar todas las conexiones por seguridad
-                rs.close();
-                pre.close();
-                con.close();
-            } catch (Exception e) {
-                System.out.println("Error de Logica de Datos");
-                System.out.println(e.getMessage());
-            }
-        }
-        return listaempleados;
-    }
-
 
 //Verificar tipo de usuario
     public Empleado verificacionUsuario(String usuario, String password) throws ClassNotFoundException {
@@ -143,11 +88,10 @@ public class Empleado {
 
             while (rs.next()) {
                 emp = new Empleado();
-                emp.setId_employee(rs.getInt("id_employee"));
+                emp.setId(rs.getInt("id"));
                 emp.setName(rs.getString("name"));
                 emp.setUser(rs.getString("user"));
                 emp.setPass(rs.getString("pass"));
-                emp.setId_rol(rs.getInt("id_rol"));
                 emp.setName_rol(rs.getString("name_rol"));
                 break;
             }
@@ -160,41 +104,6 @@ public class Empleado {
             try {
                 //cerrar todas las conexiones por seguridad
                 rs.close();
-                pre.close();
-            } catch (Exception e) {
-                System.out.println("Error de Logica de Datos");
-                System.out.println(e.getMessage());
-            }
-        }
-        return emp;
-    }
-
-public Empleado eliminarEmpleado(int id_employee) throws ClassNotFoundException {
-        Empleado emp = null;
-        String msj=null;
-        Connection con = null;
-        PreparedStatement pre = null;
-        ResultSet rs = null;
-        con = Conexion.getConexion();
-        String q = "DELETE FROM usuarios WHERE id_employee= " + id_employee;
-        try {
-
-            /*Tengo que comparar el nombre de usuario y password respecto de la bd, 
-            si coincide accede sino manda un mensaje de error en las credenciales
-             */
-            //primero me debo de conectar a la bd
-            
-            pre = con.prepareStatement(q);
-            pre.executeUpdate();
-     
-
-        } catch (SQLException ed) {
-            System.out.println("Error al Conectar la Tabla Empleado");
-            System.out.println(ed.getMessage());
- 
-        } finally {
-            try {
-                //cerrar todas las conexiones por seguridad
                 pre.close();
             } catch (Exception e) {
                 System.out.println("Error de Logica de Datos");

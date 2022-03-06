@@ -38,11 +38,10 @@ public class VerificarUsuario extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             //obtener los datos del ofrmulario
             String usuario, password;
-            
+
             usuario = request.getParameter("txtUser");
             password = request.getParameter("txtPassword");
 
-            
             /*
             Si el usuario no existe en la BD que voy a hacer
             
@@ -51,22 +50,22 @@ public class VerificarUsuario extends HttpServlet {
             si el usuario es 3 es encargado de bodega
             si el usuario es 4 = vendedor
             
-            */
+             */
             Empleado emp = new Empleado();
 
             //mando a llamar al metodo de verificacion
             emp = emp.verificacionUsuario(usuario, password);
-            
-            if(emp!=null){
+
+            if (emp != null) {
                 //vamos a crear la sesion del usuario
                 HttpSession sesion = request.getSession(true);
                 sesion.setAttribute("empleado", emp);
-                
+
                 HttpSession sesionok = request.getSession();
                 sesionok.setAttribute("name", usuario);
-                if(emp.getId_rol()==1){
+                if (emp.getId()== 1) {
                     //es el dueño
-                    response.sendRedirect("Dueno.jsp");
+                    response.sendRedirect("Registro.jsp");
                 }/*
                 else if(emp.getIdrol()==2){
                     //encargado de tienda
@@ -76,15 +75,14 @@ public class VerificarUsuario extends HttpServlet {
                 }
                 else if(emp.getIdrol()==4){
                     //vendedor
-                }*/
-                else{
+                }*/ else {
                     //cliente
-                    response.sendRedirect("Cliente.jsp");
+                    response.sendRedirect("Registro.jsp");
                 }
-                
-            }else{
+
+            } else {
                 //el usuario no existe
-                response.sendRedirect("Errores.jsp");
+                response.sendRedirect("Error.jsp");
             }
         }
     }

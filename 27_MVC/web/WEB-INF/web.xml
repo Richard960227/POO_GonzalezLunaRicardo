@@ -16,6 +16,26 @@
         <servlet-name>EditarUsuario</servlet-name>
         <servlet-class>Controlador.EditarUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarEmpleado</servlet-name>
+        <servlet-class>BD.EliminarEmpleado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BorrarEmpleado</servlet-name>
+        <servlet-class>Controlador.BorrarEmpleado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GuardarEmpleado</servlet-name>
+        <servlet-class>Servlet.GuardarEmpleado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>borrarempleado</servlet-name>
+        <servlet-class>Servlet.borrarempleado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizarEmpleado</servlet-name>
+        <servlet-class>Servlet.ActualizarEmpleado</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ejemplo</servlet-name>
         <url-pattern>/ejemplo</url-pattern>
@@ -31,6 +51,26 @@
     <servlet-mapping>
         <servlet-name>EditarUsuario</servlet-name>
         <url-pattern>/EditarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarEmpleado</servlet-name>
+        <url-pattern>/EliminarEmpleado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrarEmpleado</servlet-name>
+        <url-pattern>/BorrarEmpleado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuardarEmpleado</servlet-name>
+        <url-pattern>/GuardarEmpleado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>borrarempleado</servlet-name>
+        <url-pattern>/borrarempleado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarEmpleado</servlet-name>
+        <url-pattern>/ActualizarEmpleado</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

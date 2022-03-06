@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Controlador;
+package Servlet;
 
+import BD.Empleado;
+import Controlador.AccionesEmpleado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dears
  */
-public class EditarUsuario extends HttpServlet {
+public class ActualizarEmpleado extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,15 +33,30 @@ public class EditarUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EditarUsuario</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EditarUsuario at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+            int id = Integer.parseInt(request.getParameter("id2"));
+            String name, user, pass, name_rol;
+
+            name = request.getParameter("name2");
+            user = request.getParameter("user2");
+            pass = request.getParameter("pass2");
+            name_rol = request.getParameter("name_rol2");
+
+            Empleado e = new Empleado();
+
+            e.setId(id);
+            e.setName(name);
+            e.setUser(user);
+            e.setPass(pass);
+            e.setName_rol(name_rol);
+
+            int estatus = AccionesEmpleado.actualizarEmpleado(e);
+
+            if (estatus > 0) {
+                response.sendRedirect("ConsultarEmpleados.jsp");
+            } else {
+                response.sendRedirect("Error.jsp");
+            }
         }
     }
 
