@@ -28,7 +28,7 @@ public class AccionesEmpleado {
             ps.setString(3, e.getUser());
             ps.setString(4, e.getPass());
             ps.setString(5, e.getName_rol());
-            ps.executeUpdate();
+            estatus = ps.executeUpdate();
 
             System.out.println("Registro Exitoso");
             con.close();

@@ -34,9 +34,9 @@ public class ActualizarEmpleado extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 
-            int id = Integer.parseInt(request.getParameter("id2"));
+            int id;
             String name, user, pass, name_rol;
-
+            id = Integer.parseInt(request.getParameter("id2"));
             name = request.getParameter("name2");
             user = request.getParameter("user2");
             pass = request.getParameter("pass2");

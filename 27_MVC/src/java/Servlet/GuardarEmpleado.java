@@ -33,23 +33,25 @@ public class GuardarEmpleado extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+            int id;
             String name, user, pass, name_rol;
-            
+            id = Integer.parseInt(request.getParameter("id"));
             name = request.getParameter("name");
             user = request.getParameter("user");
             pass = request.getParameter("pass");
             name_rol = request.getParameter("name_rol");
-            
+
             Empleado e = new Empleado();
-            
+
+            e.setId(id);
             e.setName(name);
             e.setUser(user);
             e.setPass(pass);
             e.setName_rol(name_rol);
-            
+            AccionesEmpleado.registrarEmpleado(e);
+
             int estatus = AccionesEmpleado.registrarEmpleado(e);
-            
+
             if (estatus > 0) {
                 response.sendRedirect("ConsultarEmpleados.jsp");
             } else {
