@@ -2,11 +2,12 @@
 
 function problema1(){
 
-    var palabra = document.querySelector('#p1-input').value;
+    var checkOk = "ABCDEFGHIJKLMNOPQRSTUVW" + "abcdefghijklmnopqrstuvwxyz";
+    var checkStr = document.querySelector('#p1-input').value;
+    
+    var palabrainvertida = checkStr.split('').reverse().join('').replace(/ \s+/g, ' ');
 
-    var palabrainvertida = palabra.split('').reverse().join('');
-
-    document.querySelector('#p1-output').textContent = palabrainvertida.replace(/ /g, '');
+    document.querySelector('#p1-output').textContent = palabrainvertida;
 
 }
 
