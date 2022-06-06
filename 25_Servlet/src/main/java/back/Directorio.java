@@ -34,7 +34,8 @@ public class Directorio extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Directorio</title>");            
+             out.println("<title>Servlet Directorio</title>"
+                    + "<link rel=\"stylesheet\" href=\"css/style.css\"/>");            
             out.println("</head>");
             out.println("<body>");
             
@@ -58,6 +59,7 @@ public class Directorio extends HttpServlet {
         }
     }
 
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
