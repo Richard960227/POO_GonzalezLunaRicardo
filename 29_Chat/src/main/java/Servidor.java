@@ -36,7 +36,7 @@ public class Servidor {
     
     public Servidor(int port){
         this.port = port;
-        fecha = new SimpleDateFormat("HH:mm:ss");
+        fecha = new SimpleDateFormat("HH.mm.ss");
         al = new ArrayList<ClienteThread>();
     }
     

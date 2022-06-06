@@ -131,7 +131,8 @@ public class Cliente {
 
     public static void main(String[] args) {
         int port = 1500;
-        String serverAdress = "10.125.25.43";
+        String serverAdress = "10.125.23.172";
+//10.125.25.43
         String userName = "Juanito";
         Scanner scan = new Scanner(System.in);
 
@@ -145,7 +146,7 @@ public class Cliente {
                 serverAdress = args[2];
             case 2:
 //cuando el cliente mal puerto
-try {
+            try {
                 port = Integer.parseInt(args[1]);
             } catch (Exception e) {
                 System.out.println("Puerto Invalido");
