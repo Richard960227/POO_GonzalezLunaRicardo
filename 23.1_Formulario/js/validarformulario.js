@@ -25,11 +25,11 @@ function validar(formulario){
     }
     if(!allvalid){
         alert("Escribe solo letras en el campo Nombre");
-        formulario.telefono.focus();
+        formulario.nombre.focus();
         return (false);
     }
 
-    if(formulario.telefono.value.length < 10){
+    if(formulario.telefono.value.length > 10){
         alert("Escriba su Número a 10 digitos");
         //colocar cursor en el campo de error
         formulario.telefono.focus();
@@ -57,4 +57,15 @@ function validar(formulario){
         formulario.telefono.focus();
         return (false);
     }
+
+    //manejo de expresiones regulares
+
+    var txt = formulario.correo.value;
+
+    var b = /^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)$)/;
+
+    alert("Email " + (b.test(txt) ? "" : "no ") + "valido");
+
+    return b.test(txt);
+
 }
