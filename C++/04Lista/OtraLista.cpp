@@ -28,26 +28,26 @@ void insertar(int dat);
 void mostrar(void);
 void borrar(void);
 void menu(void);
-
-//void guardar(void);
-//void cargar(void);
+void guardar(void);
+void cargar(void);
 
 main(){
 	menu();
 }
 
+//menu
 void menu(void){
 	//vamos a hacer un menu de 6 opciones
 	int opc, da;
 	
 	do{ //imprimer menu
-	 cout<<"Ejemplo Lista Completa que Carga Datos";
-	 cout<<"\n1. Buscar Datos";
-	 cout<<"\n2. Insertar Datos";
+	 cout<<"\n\t***Ejemplo Lista Completa que Carga Datos***\n";
+	 cout<<"\n1. Insertar Datos";
+	 cout<<"\n2. Buscar Datos";
 	 cout<<"\n3. Mostrar Datos";
-	 cout<<"\n4. Borrar Dato ";
-	 cout<<"\n5. Guardar Datos en Archivo";
-	 cout<<"\n6. Cargar Datos en Archivo";
+	 cout<<"\n4. Borrar Dato";
+	 cout<<"\n5. Cargar Datos en Archivo";
+	 cout<<"\n6. Guardar Datos en Archivo";
 	 cout<<"\n7. Salir";
 	 cout<<"\nOpcion:  ";
 	 cin>>opc;
@@ -55,22 +55,24 @@ void menu(void){
 	 //menu
 	 switch(opc){
 	 	case 1:
-	 		//buscar
-	 		cout<<"\n\nIngresa Dato a Buscar";
+	 		//ingresar
+	 		cout<<"\n\tIngresa Dato: ";
 	 		cin>>da;
-	 		
-	 		if(buscar(da)){
-	 			cout<<"Dato Existe Wiii";
-			 }else{
-			 	cout<<"Dato Inexistente, solo juguito";
-			 	getch();
-			 }
+	 		insertar(da);
+	 		//cout<<"\n¡Desea Ingresar Otro Dato?\n1.Si\n2.No";
 		break;
 		
 		case 2:
-			cout<<"\n\nIngresa Dato";
+	 		//buscar
+	 		cout<<"\n\nIngresa Dato a Buscar: ";
 	 		cin>>da;
-	 		insertar(da);
+	 		
+	 		if(buscar(da)){
+	 			cout<<"Dato Existe Wiii\n";
+			 }else{
+			 	cout<<"Dato Inexistente, solo juguito\n";
+			 	getch();
+			 }
 	 	break;
 	 	
 	 	case 3:
@@ -82,11 +84,11 @@ void menu(void){
 	 	break;
 	 	
 	 	case 5:
-	 		//guardar();
+	 		cargar();
 	 	break;
 	 	
 	 	case 6:
-	 		//cargar();
+	 		guardar();
 	 	break;
 	 	
 	 	case 7:
@@ -101,44 +103,10 @@ void menu(void){
 			 }
 			 exit(0);//se cierra
 		default:
-			cout<<"Aprenda a leer ";
+			cout<<"Aprenda a leer\n";
 			getch();
 		}
 	}while(opc);
-}
-
-void mostrar(void){
-	int cont=1;
-	
-	if(!i){
-		//no hay lista que mostrar
-		cout<<"No Hay Lista que Mostrar";
-		getch();
-		return;
-	}
-	//si hay datos
-	p=i;
-	cout<<"\n\n";
-	while(p){
-		//como si existe la lista la recorremos
-		cout<<cont++<<"\nValor = "<<p->i<<endl;
-		p=p->s;
-	}
-	cout<<"\nFin de Lista";
-	getch();
-}
-
-	//buscar
-	int buscar(int d){
-	//si esta vacia
-		if(!i){
-		cout<<"No Hay Datos en la Lista";
-		getch();
-		return(0);
-		}
-	//cuando si hay datos
-		p = i;
-		a = NULL;
 }
 
 //insertar
@@ -172,10 +140,12 @@ void insertar(int dat){
 	
 	e->i=dat;
 	
+	
 	if(p==i && p->s){
 		if(p->i < e->i){
 			//el ultimo dato
 			p->s = e;
+			e->s = NULL;
 		}else{
 			//En medio
 			e->s = p;
@@ -197,6 +167,108 @@ void insertar(int dat){
 	}
 }
 
-//Guardar
+//buscar
+int buscar(int d){
+	//si esta vacia
+		if(!i){
+		cout<<"No Hay Datos en la Lista";
+		getch();
+		return(0);
+		}
+	//cuando si hay datos
+		p = i;//i es el dato
+		a = NULL; // el inicio de la lista
+		while(p->s && p->i < d){
+			a=p;
+			p=p->s; //Todo este algoritmo "desde a=p" pa recorrer
+		}
+		return(p->i==d?1:0); //? es un operador ternario (es como un if) devuelve verdadero o falso
+}
+
+//mostrar
+void mostrar(void){
+	int cont=1;
+	
+	if(!i){
+		//no hay lista que mostrar
+		cout<<"No Hay Lista que Mostrar\n";
+		getch();
+		return;
+	}
+	//si hay datos
+	p=i;
+	cout<<"\n\n";
+	while(p){
+		//como si existe la lista la recorremos
+		cout<<cont++<<"\nValor = "<<p->i<<endl;
+		p=p->s;
+	}
+	cout<<"\nFin de Lista";
+	getch();
+}
+
+//borrar
+void borrar(void){
+	int da;
+	cout<<"\nIngresa Dato a Eliminar: ";
+	cin>>da;
+	//dobo buscar dato
+	if(buscar(da)){
+		//si esta
+		if(a){
+			a->s=p->s;//asignar el nodo donde esta el dato
+		}else{
+			//que obtenga el valor del nodo
+			i = p->s;
+		}
+		delete(p);
+		cout<<"Dato Eliminado\n";
+	}else{
+		cout<<"\nDato No Encontrable Solo Juguito T-T";
+		getch();
+	}
+}
+
+//cargar
+void cargar(void){
+ int m,y;
+ FILE *archivo;
+ archivo=fopen("Lista.TXT","r");//El archivo se debe de poner en mayuscula
+ if(!archivo){
+ 	cout<<"\n\nEl archivo no existe";
+ 	
+ 	return;
+ }
+ 
+do {
+ m=fscanf(archivo,"%i\n",&y);
+ if(m!=EOF){ //end of file "fin de la fila"es para ver que ya no hay más información 
+ insertar(y);
+ }
+ }
+ while (m!=EOF);
+ cout<<"\n\nSe cargo el archivo";
+ fclose(archivo);
+ 
+ }
+
+//guardar
+void guardar(void){
+	FILE *archivo;
+	archivo=fopen("Lista.TXT","w");
+	if(!i){
+		cout<<"\n\nNo Hay Lista que Guardar";
+		return;
+	}
+	p=i;
+	while(p){
+		fprintf(archivo,"%i\n", p->i);
+		p=p->s;
+	}
+	cout<<"\n\nSe Guardo Archivo";
+	fclose(archivo);
+}
+
+
 
 
