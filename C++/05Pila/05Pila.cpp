@@ -2,6 +2,8 @@
 Vamos a crear un ejemplo de una pila simple, porque quiero que hagan torres de hanoi
 */
 
+#include<wchar.h>
+#include<locale.h>
 #include<iostream>
 #include<stdlib.h>//New
 
@@ -20,6 +22,8 @@ void mostrarpila(Nodo *&);
 void eliminarpila(Nodo *&, int &);
 
 int main(){
+	
+	setlocale(LC_ALL,"");
 	/*
 	el primero en entrar es el ultimo en salir
 	el ultimo en entrar es el primero en salir
@@ -71,7 +75,7 @@ int main(){
 			break;
 			
 			default:
-				cout<<"\n\Hasta Luego\n";
+				cout<<"\n\tHasta Luego\n";
 		}
 	}while(op!=4);
 		
