@@ -1,7 +1,6 @@
 /*Ejemplo de dos pilas
-
-El programa consiste en crear 
-un menu con 4 opciones para
+El programa consiste en crear
+un menu con 4 opciones para 
 apilar, ver, unir y salir*/
 
 #include<wchar.h>
@@ -9,7 +8,7 @@ apilar, ver, unir y salir*/
 #include<iostream>
 #include<conio.h>
 
-//la estructura del nodo
+//la estrucutura del nodo
 struct nodo{
 	int nro;
 	struct nodo *siguiente;
@@ -20,15 +19,15 @@ typedef nodo *pila;
 
 using namespace std;
 
-
 //metodos recordando que tengo 2 pilas
 
-void push(pila &, int);
-void unirPilas(pila, pila);
 void imprimir1(pila);
 void imprimir2(pila);
 void imprimir3(pila, pila, pila, pila);
-int pop(pila &);
+void push(pila &, int);
+//void unirPilas(pila, pila);
+int pop(pila &, int &);
+int pila_vacia(pila *);
 
 main(){
 	
@@ -37,9 +36,9 @@ main(){
 	pila p2 = NULL;
 	pila p3 = NULL;
 	pila aux = NULL;
-	
+
 	int opc, n, valor, i;
-	
+
 	do{
 		cout<<"\n\t1.Apilar";
 		cout<<"\n\t2.Ver Valores de la Pila";
@@ -72,21 +71,22 @@ main(){
 			
 			case 2:
 				cout<<"\n\tContenido de la Pila 1\n";
+				cout<<"\t";
 				imprimir1(p1);
 				
 				cout<<"\n\tContenido de la Pila 2\n";
+				cout<<"\t";
 				imprimir2(p2);
 			break;
 			
 			case 3:
-				if(p3 != NULL){
+				if(!pila_vacia(&p1) && !pila_vacia(&p2)){
 					cout<<"\n\tPilas Unidas\n";
-					unirPilas(p1,p2);
+					//unirPilas(p1,p2);
 					imprimir3(p1, p2, aux, p3);
 				}else{
 					cout<<"\n\t*Pila Vacia* \n";
 				}
-				
 			break;
 			
 			case 4:
@@ -111,39 +111,39 @@ main(){
 			default:
 				cout<<"\n\tHasta Luego";
 			break;
-			
+
 		}
 	}while(opc!=6);
-	
-	return 0;
 }
+
 
 //push
 void push(pila &p, int n){
 	pila q = new(struct nodo);
-	q -> nro = n;
-	q -> siguiente = p;
+	q -> nro= n;
+	q->siguiente = p;
 	p = q;
 }
 
 void unirPilas(pila p1, pila p2){
 	pila q = p1;
-	while(q -> siguiente != NULL){
-		q = q ->siguiente;
-		q -> siguiente = p2;
+	while(q->siguiente != NULL){
+		q = q->siguiente;
+		q->siguiente = p2;
 	}
 }
 
+
 void imprimir1(pila p1){
 	while(p1!=NULL){
-		cout<<"\tValor: "<<p1->nro<<endl;
+		cout<<"Valor: "<<p1->nro<<endl;
 		p1=p1->siguiente;
 	}
 }
 
 void imprimir2(pila p2){
 	while(p2!=NULL){
-		cout<<"\tValor: "<<p2->nro<<endl;
+		cout<<"Valor: "<<p2->nro<<endl;
 		p2=p2->siguiente;
 	}
 }
@@ -165,13 +165,16 @@ void imprimir3(pila p1, pila p2, pila aux, pila p3){
 	while(p3!=NULL){
 		cout<<"\n\t --> "<<p3->nro<<endl;
 		p3 = p3->siguiente;
-	}	
+	}
 }
-
 //pop 
-void pop(pila &p3, int n){
+int pop(pila &p3, int &n){
 	pila aux = p3;
 	n = aux->nro;
 	p3 = aux->siguiente;
 	delete aux;
+}
+
+int pila_vacia(pila *pila){
+	return (pila == NULL ? 1:0);
 }
