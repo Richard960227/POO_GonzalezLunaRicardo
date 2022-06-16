@@ -7,6 +7,8 @@ Vamos a crear un ejemplo de uina lista que puede contener un dato y manejo de ap
 #include<string.h>
 #include<conio.h>
 #include<iostream>
+#include<wchar.h>
+#include<locale.h>
 
 /*conio es una libreria que da una extension tdio, como libreria standar, para el manejo de consola usando comandos, getch, clrscr(), gotoxy(), textcolor(), y otras
 
@@ -56,7 +58,7 @@ void menu(void){
 	 switch(opc){
 	 	case 1:
 	 		//ingresar
-	 		cout<<"\n\tIngresa Dato: ";
+	 		cout<<"\nIngresa Dato: ";
 	 		cin>>da;
 	 		insertar(da);
 	 		//cout<<"\n¡Desea Ingresar Otro Dato?\n1.Si\n2.No";
@@ -200,10 +202,10 @@ void mostrar(void){
 	cout<<"\n\n";
 	while(p){
 		//como si existe la lista la recorremos
-		cout<<cont++<<"\nValor = "<<p->i<<endl;
+		cout<<"\nValor "<<cont++<<" = "<<p->i<<endl;
 		p=p->s;
 	}
-	cout<<"\nFin de Lista";
+	cout<<"\nFin de Lista\n";
 	getch();
 }
 
@@ -224,7 +226,7 @@ void borrar(void){
 		delete(p);
 		cout<<"Dato Eliminado\n";
 	}else{
-		cout<<"\nDato No Encontrable Solo Juguito T-T";
+		cout<<"\nDato No Encontrable Solo Juguito T-T\n";
 		getch();
 	}
 }
@@ -235,7 +237,7 @@ void cargar(void){
  FILE *archivo;
  archivo=fopen("Lista.TXT","r");//El archivo se debe de poner en mayuscula
  if(!archivo){
- 	cout<<"\n\nEl archivo no existe";
+ 	cout<<"\n***El archivo no existe***\n";
  	
  	return;
  }
@@ -247,7 +249,7 @@ do {
  }
  }
  while (m!=EOF);
- cout<<"\n\nSe cargo el archivo";
+ cout<<"\n***Se cargo el archivo***\n";
  fclose(archivo);
  
  }
@@ -255,9 +257,9 @@ do {
 //guardar
 void guardar(void){
 	FILE *archivo;
-	archivo=fopen("Lista.TXT","w");
+	archivo=fopen("Lista.txt","w");
 	if(!i){
-		cout<<"\n\nNo Hay Lista que Guardar";
+		cout<<"\n***No Hay Lista que Guardar***\n";
 		return;
 	}
 	p=i;
@@ -265,7 +267,7 @@ void guardar(void){
 		fprintf(archivo,"%i\n", p->i);
 		p=p->s;
 	}
-	cout<<"\n\nSe Guardo Archivo";
+	cout<<"\n***Se Guardo Archivo***\n";
 	fclose(archivo);
 }
 
