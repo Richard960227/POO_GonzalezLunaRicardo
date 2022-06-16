@@ -1,7 +1,12 @@
 #include <iostream>
+#include<stdio.h>
+#include<stdlib.h>
+
 using namespace std;
 
 int main() {
+	
+	cout<<"  **  NUMERO PRIMO  **\n\n";
 	int divisor = 1, divisores = 0, num = 0;
 	cout<<"Ingrese numero: ";
 	cin>>num;
