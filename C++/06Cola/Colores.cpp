@@ -1,56 +1,50 @@
-/*Ejemplo de Una Cola
-Primera Entradas
-Primeras Salidas
-PEPS
-*/
-
 #include<iostream>
 
 using namespace std;
 
 //estructura
 struct nodo{
-	int nro; 
+	string color; 
 	struct nodo *siguiente;
 };
 
 //estructura cola
 struct cola{
-	nodo *delante;
-	nodo *atras;
+	nodo *ultimo;
+	nodo *primero;
 };
 
 //encolar
-void encolar(struct cola &q, int valor){
+void encolar(struct cola &q, string c){
 	//lo que hay adentro de la cola
 	struct nodo *aux = new(struct nodo);
 	
-	aux ->nro = valor;
+	aux ->color = c;
 	aux ->siguiente = NULL;
 	
-	if(q.delante == NULL){
-		q.delante = aux; //encolar el primer elemento
+	if(q.ultimo == NULL){
+		q.ultimo = aux; //encolar el primer elemento
 	}else{
-		(q.atras)->siguiente = aux;
+		(q.primero)->siguiente = aux;
 	}
 	//el puntero siempre apunta al ultimo
-	q.atras = aux;
+	q.primero = aux;
 }
 
 //desencolar
-int desencolar(struct cola &q){
-	int num;
+string desencolar(struct cola &q){
+	string col;
 	struct nodo *aux;
 	
 	//aux apunte al inicio de la cola
-	aux = q.delante;
-	num = aux->nro;
-	q.delante = (q.delante)->siguiente;
+	aux = q.ultimo;
+	col = aux->color;
+	q.ultimo = (q.ultimo)->siguiente;
 	
 	//dale delete a aux
 	delete(aux);
 	
-	return num;
+	return col;
 }
 
 //mostrar colita
@@ -58,10 +52,10 @@ void muestracola(struct cola q){
 	//nodo auxiliar
 	struct nodo *aux;
 	//siempre el nodo hasta delante
-	aux = q.delante;
+	aux = q.ultimo;
 	//cola vacia
 	while(aux!=NULL){
-		cout<<"\t --> "<<aux->nro;
+		cout<<aux->color<<" --> ";
 		aux = aux->siguiente;
 	}
 }
@@ -71,17 +65,17 @@ void vaciarcola(struct cola &q){
 	//auxiliar para eliminar cada elemento
 	struct nodo *aux;
 	//si esta vacia
-	while(q.delante != NULL){
-		aux = q.delante;
-		q.delante = aux->siguiente;
+	while(q.ultimo != NULL){
+		aux = q.ultimo;
+		q.ultimo = aux->siguiente;
 		delete(aux);
 	}
-	q.delante = NULL;
-	q.atras = NULL;
+	q.ultimo = NULL;
+	q.primero = NULL;
 }
 
 void menu(){
-	cout<<"\n\t Ejemplo de Colita Kawaii\n";
+	cout<<"\n\t Colita de Colores\n";
 	cout<<"\t 1. Encolar\n";
 	cout<<"\t 2. Desencolar\n";
 	cout<<"\t 3. Mostrar\n";
@@ -94,13 +88,13 @@ int main(){
 	struct cola q;
 	
 	//defino la cola con sus apuntadores
-	q.delante = NULL;
-	q.atras = NULL;
+	q.ultimo = NULL;
+	q.primero = NULL;
 	
 	//datos
-	int dato;
+	string dato;
 	int op;
-	int x; //funcion de pop a la cola
+	string x; //funcion de pop a la cola
 	
 	do{
 		menu();
@@ -108,23 +102,22 @@ int main(){
 		
 		switch(op){
 			case 1:
-				cout<<"\n\t Numero a Encolar: ";
-				cout<<"\t"; cin>>dato;
+				cout<<"\n\t Color a Encolar: ";
+				cin>>dato;
 				encolar(q,dato);
-				cout<<"\n\t Numero: "<<dato<<" encolado...\n";
+				cout<<"\n\t Color: "<<dato<<" encolado...\n";
 			break;
 			
 			case 2:
 				x = desencolar(q);
-				cout<<"\n\t Numero: "<<x<<" desencolado...\n";
+				cout<<"\n\t Color: "<<x<<" desencolado...\n";
 			break;
 			
 			case 3:
 				cout<<"\n\t Mostrar Cola: \n";
 				//saber que no este null
-				if(q.delante != NULL) muestracola(q);
+				if(q.ultimo != NULL) muestracola(q);
 				else cout<<"\n\t Cola Vacia...\n";
-				cout<<endl;
 			break;
 			
 			case 4:
