@@ -221,8 +221,7 @@ void modificarDato(Nodo *frente, ICO alumnos){
 	}		
 }
 
-void guardar(ICO *&alumnos, int &p){
-	Nodo *aux = alumnos;
+void guardar(ICO *&alumnos, int aux){
 	
 		//primero crear el archivo
 		FILE *archivo;
