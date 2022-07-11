@@ -2,6 +2,8 @@
 Ejemplo de una cola de matriculación de estudiante
 */
 
+#include<wchar.h>
+#include<locale.h>
 #include<fstream>
 #include<iostream>
 #include<conio.h>
@@ -22,14 +24,16 @@ struct Nodo{
 	Nodo *siguiente;
 };
 
+
+
 //metodos
 void menu();
 void agregarDatos(ICO &);
 void insertarDatos(Nodo *&, Nodo *&, ICO);
-void buscarDatos(Nodo *&, ICO);
+void buscarDatos(Nodo *, ICO);
 void modificarDato(Nodo *, ICO);
-//void guardarDatos();
 void eliminarDatos(Nodo *&, Nodo *&, ICO);
+void cargarDatos();
 bool c_vacia(Nodo *);
 
 int main(){
@@ -38,6 +42,7 @@ int main(){
 	Nodo *frente = NULL;
 	Nodo *fin = NULL;
 	char opcion;
+	setlocale(LC_ALL,"");
 	
 	do{
 		menu();
@@ -55,7 +60,7 @@ int main(){
 			case '2':
 				if(aux != NULL){
 					cout<<endl<<"|----------------------------|";
-					cout<<endl<<"|Clave"<<"\t|Nombre"<<"\t|Calificacion|\n";
+					cout<<endl<<"|Clave"<<"\t|Nombre"<<"\t|Calificación|\n";
 					while (aux!=NULL){
 						cout<<"|"<<aux->alumnos.clave<<"\t|"<<aux->alumnos.nombre<<"\t|"<<aux->alumnos.calificacion<<""<<endl;
 						aux = aux->siguiente;
@@ -66,17 +71,25 @@ int main(){
 			break;
 			
 			case '3':
-				cout<<"\n\tBuscar Alumno\n";
-				buscarDatos(frente, alumnos);
+				if(aux == NULL){
+					cout<<"\n\t***Sin Registros***\n";
+				}else{
+					cout<<"\n\tBuscar Alumno\n";
+					buscarDatos(frente, alumnos);
+				}
 			break;
 
 			case '4':
-				cout<<"\n\tActualizar Alumno\n";
-				modificarDato(frente, alumnos);
+				if(aux == NULL){
+					cout<<"\n\t***Sin Registros***\n";
+				}else{
+					cout<<"\n\tActualizar Alumno\n";
+					modificarDato(frente, alumnos);
+				}
 			break;
 			
 			case '5':
-				if(fin == NULL){
+				if(aux == NULL){
 					cout<<"\n\t***Sin Registros***\n";
 				}else{
 					eliminarDatos(frente, fin, alumnos);
@@ -85,25 +98,21 @@ int main(){
 			break;
 			
 			case '6':
-				
-	 		break;
-	 	
-	 		case '7':
-	 			
+				cargarDatos();
 	 		break;
 						
-			case '8':
+			case '7':
 				cout<<"\n\tAyos nwn/ \n";
 			break;
 			
 			default:
-				cout<<"\n\tOpcion Invalida T-T\n";
+				cout<<"\n\tOpción Invalida T-T\n";
 				break;
 		}
-		cout<<"\n\tPushale una tecla pa continuar\n";
+		cout<<"\n\tPushale una tecla pa' continuar\n";
 		getch();
 		system("cls");
-	}while(opcion != '8');
+	}while(opcion != '7');
 	return 0;
 }
 
@@ -115,23 +124,41 @@ void menu(){
 	cout<<endl<<"\t|                |                 |";
 	cout<<endl<<"\t| 1. Agregar     | 5.Eliminar      |";
 	cout<<endl<<"\t| 2. Mostrar     | 6.Cargar        |";
-	cout<<endl<<"\t| 3. Buscar      | 7.Guardar       |";
-	cout<<endl<<"\t| 4. Actualizar  | 8.Salir         |";
+	cout<<endl<<"\t| 3. Buscar      | 7.Salir         |";
+	cout<<endl<<"\t| 4. Actualizar  |                 |";
 	cout<<endl<<"\t|________________|_________________|";
-	cout<<endl<<"\t|Opcion: ";
+	cout<<endl<<"\t|Opción: ";
 }
 
 void agregarDatos(ICO &alumnos){
 	
-	cout<<"\n\tIngresa Nombre del Alumno: ";
-	cin.getline(alumnos.nombre, 30, '\n');
+	ofstream foutput;
+	ifstream finput;
 	
-	cout<<"\n\tIngresa Clave del Alumno: ";
-	cin>>alumnos.clave;
-	cout<<endl;
+	foutput.open ("Calificaciones.txt",ios::app);
+    finput.open ("Calificaciones.txt");
 	
-	cout<<"\tIngresa Calificacion del Alumno: ";
-	cin>>alumnos.calificacion;
+	if(finput.is_open()){
+		cout<<"\n\tIngresa Nombre del Alumno: ";
+		cin.getline(alumnos.nombre, 30, '\n');
+		foutput<<endl<<"--------------------------------------------";
+		foutput<<endl<<"| Nombre: "<< alumnos.nombre;
+	
+		cout<<"\n\tIngresa Matricula del Alumno: ";
+		cin>>alumnos.clave;
+		cout<<endl;
+		foutput<<" | Matricula: " << alumnos.clave;
+	
+		cout<<"\tIngresa Calificación del Alumno: ";
+		cin>>alumnos.calificacion;
+		foutput<<" | Calificación: " << alumnos.calificacion;
+		
+		cout<<"\nDatos ingresados correctamente";
+    	finput.close();
+    	foutput.close();
+	}else{
+		cout<<"\n\t***Error en Archivo***";
+	}
 }
 
 void insertarDatos(Nodo *&frente, Nodo *&fin, ICO alumnos){
@@ -168,78 +195,82 @@ void eliminarDatos(Nodo *&frente, Nodo *&fin, ICO alumnos){
 	delete aux;
 }
 
-void buscarDatos(Nodo *&frente, ICO alumnos){
-	Nodo* actual = new Nodo();
-	bool encontrado = false;
-	int nodoBuscado = 0;
-	cout << "\n\tIngresa Clave del Alumno: ";
-	cin >> nodoBuscado;
-	if(frente != NULL){
-		while(actual!=NULL && encontrado != true){
-			
-			if(actual->alumnos.clave == nodoBuscado){
-				cout<< "\n\tAlumno "<<alumnos.nombre<<" con Clave "<<nodoBuscado<<" con Calificación "<<alumnos.calificacion;
-				cout<<endl;
-				encontrado = true;
-			}
-			
-			actual = actual->siguiente;
+void buscarDatos(Nodo *frente, ICO alumnos){
+	
+	bool band = false;
+	
+	Nodo *actual = new Nodo();
+	actual = frente;
+	
+	cout<<"\n\tIngrese Matricula del Alumno: ";
+	cin>>alumnos.clave;
+	
+		while((actual != NULL) && (actual->alumnos.clave <=alumnos.clave)){
+		if(actual->alumnos.clave == alumnos.clave){
+			cout<<"\n\tAlumno con Matricula ("<<actual->alumnos.clave<<"); Nombre ("<<actual->alumnos.nombre<<"); Calificación ("<<actual->alumnos.calificacion<<")Si a sido encontrado en Registros\n";
+		band = true;
 		}
-		if(!encontrado){
-			cout << "\n\tAlumno No Encontrado";
-		}
+		actual = actual->siguiente;
+	}
+	if(band == true){
+		
 	}else{
-		cout << endl << "\n\tLa cola se encuentra Vacia " << endl << endl;
-	}	
+	cout<<"\n\tAlumno con Matricula ("<<actual->alumnos.clave<<") No a sido endontrado en Registros\n";
+	}
 }
 
 void modificarDato(Nodo *frente, ICO alumnos){
+	
+	bool band = false;
+	
 	Nodo* actual = new Nodo();
 	actual = frente;
-	bool encontrado = false;
-	int nodoBuscado = 0;
-	cout << "\n\tIngrese Clave del Alumno para Modificar: ";
-	cin >> nodoBuscado;
-	if(frente != NULL){
-		while(actual!=NULL && encontrado != true){
+	
+	cout<<"\n\tIngresa Matricula del Alumno: ";
+	cin>>alumnos.clave;
+		
+		while(actual!=NULL && band != true){
 			
-			if(actual->alumnos.clave == nodoBuscado){
-				cout << "\n\tAlumno con Clave ( " << nodoBuscado << " ) Encontrado";
-				cout << "\n\tIngrese Nueva Clave para este Alumno: ";
-				cin >> actual -> alumnos.clave;
-				cout << "\n\tAlumno Modificado\n\n";
-				encontrado = true;
+				if(actual->alumnos.clave == alumnos.clave){
+					cout << "\n\tAlumno Encontrado";
+					cout << "\n\tMatricula del Alumno: " << actual->alumnos.clave;
+					cout << "\n\tIngrese Nueva Matricula para este Alumno: ";
+					cin >> actual -> alumnos.clave;
+				
+					cout << "\n\tNombre del Alumno: "<< actual->alumnos.nombre;
+					cout << "\n\tIngrese Nuevo Nombre para este Alumno: ";
+					cin >> actual -> alumnos.nombre;
+				
+					cout << "\n\tCalificación del Alumno: "<< actual->alumnos.calificacion;
+					cout << "\n\tIngrese Nueva Calificación para este Alumno: ";
+					cin >> actual -> alumnos.calificacion;
+				
+					cout << "\n\tAlumno Modificado\n\n";
+					band = true;
 			}
 			
 			actual = actual->siguiente;
 		}
-		if(!encontrado){
+		if(!band){
 			cout << "\n\tAlumno No Encontrado\n\n";
-		}
-	}else{
-		cout << endl << "\n\tSin Registros" << endl;
-	}		
+		}		
 }
 
-void guardar(ICO *&alumnos, int aux){
+void cargarDatos(){
+	ifstream archivo;
+	string registro;
 	
-		//primero crear el archivo
-		FILE *archivo;
-		archivo = fopen("Calificaciones.txt","w");//aqui va el nombre
-		//se le conoce como la serializacion del archivo
-		if(!aux){
-			cout<<"No hay nada que guardar";
-			return;
-		}
-		p = aux->alumnos;
-		while(p){
-			fprintf(archivo, "%i\n", p->i) //%i enteros %c caracter
-			p = p->siguiente;
-		}
-	cout<<"Archivo Guardado";
-	//es importante crrar el flujo del archivo
-	fclose(archivo);
-	getchar();
+	archivo.open("Calificaciones.txt", ios::in);
+	if(archivo.fail()){
+		cout<<"No se pudo abrir";		
+	}
+	while(!archivo.eof()){
+		getline(archivo, registro);
+		cout<<registro<<endl;
+	}
+	
+	archivo.close();
+	return;
 }
 
 bool c_vacia(Nodo *frente){

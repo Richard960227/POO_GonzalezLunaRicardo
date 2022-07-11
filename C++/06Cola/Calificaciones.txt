@@ -1,0 +1,7 @@
+
+--------------------------------------------
+| Nombre: Pedro | Matricula: 123 | Calificación: 10
+--------------------------------------------
+| Nombre: Rosa | Matricula: 456 | Calificación: 9
+--------------------------------------------
+| Nombre: Juan | Matricula: 789 | Calificación: 8

@@ -45,10 +45,10 @@ void encolar(struct cola &q, string valor, int cuenta, int cantidad){
 void mostrarCola(struct cola q){
 	struct nodo *aux;
 	aux = q.delante;
-	cout<<"\nFila de Tarjetahabientes\n";
-	cout<<"|Tarjetahabiente"<<"|Tipo de Cuenta"<<"|Deposito"<<endl;
+	cout<<"\n\tFila de Tarjetahabientes";
+	cout<<"\n\t|Tarjetahabiente"<<"         |Tipo de Cuenta"<<"        |Deposito"<<endl;
 	while(aux!=NULL){
-		cout<<"|"<<aux->dato<<"|"<<aux->cuenta<<"|$"<<aux->cantidad<<endl;
+		cout<<"\t|"<<aux->dato<<"           |"<<aux->cuenta<<"          | $"<<aux->cantidad<<endl;
 		aux = aux->siguiente;
 	}
 }
@@ -128,7 +128,7 @@ int main(){
 				cout<<"Tipo de Cuenta... \n\t1)VIP\n\t2)Empresarial\n\t3)Normal\n\t4)Sin Cuenta\n";
 				cin>>cuenta;
 				cout<<endl;
-				cout<<"¡Desea Realizar un Deposito?\n\t1)Si\n\t2)No";
+				cout<<"\n\t¡Desea Realizar un Deposito?\n\t1)Si\n\t2)No";
 				cin>>deposito;
 				if(deposito>=2){
 					cout<<"\n\t***Sin Deposito***";
@@ -144,16 +144,16 @@ int main(){
 			break;
 			
 			case 2:
-				cout<<"\nMostrar Fila\n";
 				if(q.delante!=NULL){
+					cout<<"\n\tMostrar Fila\n";
 					mostrarCola(q);
 				}else{
-					cout<<"\nFila Vacia\n";
+					cout<<"\n\tFila Vacia\n";
 				}
 			break;
 			
 			default:
-				cout<<"\nOpcion no Valida\n";
+				cout<<"\n\tOpcion no Valida\n";
 				system("pause");
 				exit(0);
 		}
