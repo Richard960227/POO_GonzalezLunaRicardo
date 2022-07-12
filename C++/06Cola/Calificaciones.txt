@@ -5,3 +5,7 @@
 | Nombre: Rosa | Matricula: 456 | Calificación: 9
 --------------------------------------------
 | Nombre: Juan | Matricula: 789 | Calificación: 8
+--------------------------------------------
+| Nombre: Javier | Matricula: 24682 | Calificación: 7
+--------------------------------------------
+| Nombre: fer | Matricula: 246 | Calificación: 10

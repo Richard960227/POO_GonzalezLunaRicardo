@@ -43,14 +43,20 @@ void encolar(struct cola &q, string valor, int cuenta, int cantidad){
 
 //mostrar la cola
 void mostrarCola(struct cola q){
-	struct nodo *aux;
+	nodo *aux = new nodo();
 	aux = q.delante;
-	cout<<"\n\tFila de Tarjetahabientes";
-	cout<<"\n\t|Tarjetahabiente"<<"         |Tipo de Cuenta"<<"        |Deposito"<<endl;
-	while(aux!=NULL){
-		cout<<"\t|"<<aux->dato<<"           |"<<aux->cuenta<<"          | $"<<aux->cantidad<<endl;
-		aux = aux->siguiente;
-	}
+	
+	if(aux!=NULL){
+		cout<<"\n\tFila de Tarjetahabientes";
+		cout<<"\n\tTipo de Cuenta... \n\t1)VIP\n\t2)Empresarial\n\t3)Normal\n\t4)Sin Cuenta";
+		cout<<"\n\t|Tarjetahabiente"<<"|Tipo de Cuenta"<<"|Deposito"<<endl;
+		while(aux!=NULL){
+			cout<<"\t|"<<aux->dato<<"           |"<<aux->cuenta<<"             | $"<<aux->cantidad<<endl;
+			aux = aux->siguiente;
+		}
+	}else{
+		cout<<"\n\tFila Vacia\n";
+	}	
 }
 
 //definir una prioridaad
@@ -95,14 +101,14 @@ void insertar(struct cola &q, string turno, int cuenta, int cantidad){
 }
 
 void menu(){
-	cout<<endl<<"_____________________________";
-	cout<<endl<<"|     Tarjetahabientes      |";
-	cout<<endl<<"|---------------------------|";
-	cout<<endl<<"|1.Asignar Turno            |";  
-	cout<<endl<<"|2.Mostrar Tarjetahabientes |";
-	cout<<endl<<"|3.Salir                    |";
-	cout<<endl<<"|___________________________|";
-	cout<<endl<<"-------------------Opcion: ";
+	cout<<endl<<"\t_____________________________";
+	cout<<endl<<"\t|     Tarjetahabientes      |";
+	cout<<endl<<"\t|---------------------------|";
+	cout<<endl<<"\t|1.Asignar Turno            |";  
+	cout<<endl<<"\t|2.Mostrar Tarjetahabientes |";
+	cout<<endl<<"\t|3.Salir                    |";
+	cout<<endl<<"\t|___________________________|";
+	cout<<endl<<"-----------------------Opcion: ";
 }
 
 int main(){
@@ -113,7 +119,7 @@ int main(){
 	//variables
 	string turno; //caracter a encolar
 	int cuenta, deposito, cantidad; //prioridad
-	int op; //opcion menu
+	char op; //opcion menu
 	int x; // para la funcion pop
 	
 	do{
@@ -121,14 +127,14 @@ int main(){
 		cin>>op;
 		
 		switch(op){
-			case 1:
+			case '1':
 				cout<<"\n\tNombre: ";
 				cin>>turno;
 				cout<<endl;
-				cout<<"Tipo de Cuenta... \n\t1)VIP\n\t2)Empresarial\n\t3)Normal\n\t4)Sin Cuenta\n";
+				cout<<"\tTipo de Cuenta... \n\t1)VIP\n\t2)Empresarial\n\t3)Normal\n\t4)Sin Cuenta\n\tCuenta: ";
 				cin>>cuenta;
 				cout<<endl;
-				cout<<"\n\t¡Desea Realizar un Deposito?\n\t1)Si\n\t2)No";
+				cout<<"\n\t¡Desea Realizar un Deposito?\n\t1)Si\n\t2)No\n\tOpcion: ";
 				cin>>deposito;
 				if(deposito>=2){
 					cout<<"\n\t***Sin Deposito***";
@@ -143,22 +149,18 @@ int main(){
 				cout<<"\n\tTarjetahabiente: "<<turno<<" en Fila\n";
 			break;
 			
-			case 2:
-				if(q.delante!=NULL){
-					cout<<"\n\tMostrar Fila\n";
-					mostrarCola(q);
-				}else{
-					cout<<"\n\tFila Vacia\n";
-				}
+			case '2':
+				mostrarCola(q);
 			break;
 			
 			default:
 				cout<<"\n\tOpcion no Valida\n";
 				system("pause");
 				exit(0);
+			break;
 		}
 		system("pause");
 		system("cls");
-	}while(op!=2);
+	}while(op!='2');
 	return 0;
 }

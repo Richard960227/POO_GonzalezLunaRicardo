@@ -141,19 +141,19 @@ void agregarDatos(ICO &alumnos){
 	if(finput.is_open()){
 		cout<<"\n\tIngresa Nombre del Alumno: ";
 		cin.getline(alumnos.nombre, 30, '\n');
-		foutput<<endl<<"--------------------------------------------";
-		foutput<<endl<<"| Nombre: "<< alumnos.nombre;
+		foutput<<endl<<"\n\t--------------------------------------------";
+		foutput<<endl<<"\n\t| Nombre: "<< alumnos.nombre;
 	
 		cout<<"\n\tIngresa Matricula del Alumno: ";
 		cin>>alumnos.clave;
 		cout<<endl;
-		foutput<<" | Matricula: " << alumnos.clave;
+		foutput<<"\n\t | Matricula: " << alumnos.clave;
 	
-		cout<<"\tIngresa Calificación del Alumno: ";
+		cout<<"\n\tIngresa Calificación del Alumno: ";
 		cin>>alumnos.calificacion;
-		foutput<<" | Calificación: " << alumnos.calificacion;
+		foutput<<"\n\t | Calificación: " << alumnos.calificacion;
 		
-		cout<<"\nDatos ingresados correctamente";
+		cout<<"\n\tDatos ingresados correctamente";
     	finput.close();
     	foutput.close();
 	}else{
@@ -262,15 +262,14 @@ void cargarDatos(){
 	
 	archivo.open("Calificaciones.txt", ios::in);
 	if(archivo.fail()){
-		cout<<"No se pudo abrir";		
+		cout<<"\n\t***No se pudo abrir***";		
 	}
-	while(!archivo.eof()){
-		getline(archivo, registro);
+	while(getline(archivo, registro)){
 		cout<<registro<<endl;
 	}
 	
 	archivo.close();
-	return;
+	system("pause");
 }
 
 bool c_vacia(Nodo *frente){
