@@ -9,3 +9,9 @@
 | Nombre: Javier | Matricula: 24682 | Calificación: 7
 --------------------------------------------
 | Nombre: fer | Matricula: 246 | Calificación: 10
+
+	--------------------------------------------
+
+	| Nombre: Jose
+	 | Matricula: 1
+	 | Calificación: 10

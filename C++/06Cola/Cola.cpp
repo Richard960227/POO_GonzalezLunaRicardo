@@ -1,186 +1,139 @@
-#include <iostream>
+/*Ejemplo de Una Cola
+Primera Entradas
+Primeras Salidas
+PEPS
+*/
 
-using namespace::std;
+#include<iostream>
 
+using namespace std;
+
+//estructura
 struct nodo{
-	char dato;
-	nodo* siguiente;
-} *primero, *ultimo;
+	int nro; 
+	struct nodo *siguiente;
+};
 
+//estructura cola
+struct cola{
+	nodo *delante;
+	nodo *atras;
+};
 
-void insertarNodo();
-void buscarNodo();
-void modificarNodo();
-void eliminarNodo();
-void desplegarCola();
-
-int main(){	
-	int opcion_menu=0;
-	do
-	{
-		cout << endl << "|-------------------------------------|";
-		cout << endl << "|              ° COLA °               |";
-		cout << endl << "|------------------|------------------|";
-		cout << endl << "| 1. Insertar      | 4. Eliminar      |";
-		cout << endl << "| 2. Buscar        | 5. Desplegar     |";
-		cout << endl << "| 3. Modificar     | 6. Salir         |";
-		cout << endl << "|------------------|------------------|";
-		cout << endl << endl << " Escoja una Opcion: ";
-		cin >> opcion_menu;
-		switch(opcion_menu){
-			case 1:
-				cout << endl << endl << " INSERTA NODO EN LA COLA " << endl << endl;
-				insertarNodo();
-				break;
-			case 2:
-				cout << endl << endl << " BUSCAR UN NODO EN LA COLA " << endl << endl;
-				buscarNodo();
-				break;
-			case 3:
-				cout << endl << endl << " MODIFICAR UN NODO DE LA COLA " << endl << endl;
-				modificarNodo();
-				break;
-			case 4:
-				cout << endl << endl << " ELIMINAR UN NODO DE LA COLA " << endl << endl;
-				eliminarNodo();
-				break;
-			case 5: 
-				cout << endl << endl << " DESPLEGAR COLA DE NODOS " << endl << endl;
-				desplegarCola();
-				break;
-			case 6:
-				cout << endl << endl << " Programa finalizado..." << endl << endl;
-				break;
-			default:
-				cout << endl << endl << " Opcion No Valida " << endl << endl;
-			}
-	} while (opcion_menu != 6);
-	return 0;
-}             
-
-void insertarNodo(){
-	nodo* nuevo = new nodo();
-	cout << " Ingrese el dato del nuevo Nodo: ";
-	cin >> nuevo->dato;
-
-	if(primero==NULL){
-		primero = nuevo;
-		primero->siguiente = NULL;
-		ultimo = primero;
+//encolar
+void encolar(struct cola &q, int valor){
+	//lo que hay adentro de la cola
+	struct nodo *aux = new(struct nodo);
+	
+	aux ->nro = valor;
+	aux ->siguiente = NULL;
+	
+	if(q.delante == NULL){
+		q.delante = aux; //encolar el primer elemento
 	}else{
-		ultimo->siguiente = nuevo;
-		nuevo->siguiente = NULL;
-		ultimo = nuevo;
+		(q.atras)->siguiente = aux;
 	}
-	cout << endl << " Nodo Ingresado " << endl << endl;
+	//el puntero siempre apunta al ultimo
+	q.atras = aux;
 }
 
-void buscarNodo(){
-	nodo* actual = new nodo();
-	actual = primero;
-	bool encontrado = false;
-	char nodoBuscado;
-	cout << " Ingrese el dato del nodo a Buscar: ";
-	cin >> nodoBuscado;
-	if(primero != NULL){
-		while(actual!=NULL && encontrado != true){
-			
-			if(actual->dato == nodoBuscado){
-				cout << "\n Nodo con el dato ( " << nodoBuscado << " ) Encontrado";
-				encontrado = true;
-			}
-			
-			actual = actual->siguiente;
-		}
-		if(!encontrado){
-			cout << "\n Nodo No Encontrado";
-		}
-	}else{
-		cout << endl << " La cola se encuentra Vacia " << endl << endl;
-	}	
+//desencolar
+int desencolar(struct cola &q){
+	int num;
+	struct nodo *aux;
+	
+	//aux apunte al inicio de la cola
+	aux = q.delante;
+	num = aux->nro;
+	q.delante = (q.delante)->siguiente;
+	
+	//dale delete a aux
+	delete(aux);
+	
+	return num;
 }
 
-void modificarNodo(){
-	nodo* actual = new nodo();
-	actual = primero;
-	bool encontrado = false;
-	int nodoBuscado = 0;
-	cout << " Ingrese el dato del nodo a Buscar para Modificar: ";
-	cin >> nodoBuscado;
-	if(primero != NULL){
-		while(actual!=NULL && encontrado != true){
-			
-			if(actual->dato == nodoBuscado){
-				cout << "\n Nodo con el dato ( " << nodoBuscado << " ) Encontrado";
-				cout << "\n Ingrese el nuevo dato para este Nodo: ";
-				cin >> actual -> dato;
-				cout << "\n Nodo Modificado\n\n";
-				encontrado = true;
-			}
-			
-			actual = actual->siguiente;
-		}
-		if(!encontrado){
-			cout << "\n Nodo No Encontrado\n\n";
-		}
-	}else{
-		cout << endl << " La cola se encuentra Vacia " << endl << endl;
-	}		
+//mostrar colita
+void muestracola(struct cola q){
+	//nodo auxiliar
+	struct nodo *aux;
+	//siempre el nodo hasta delante
+	aux = q.delante;
+	//cola vacia
+	while(aux!=NULL){
+		cout<<"\t --> "<<aux->nro;
+		aux = aux->siguiente;
+	}
 }
 
-// primero = 45    ultimo = 12      actual = 12   anterior = null      encontrado = false         nodoBuscado = 6              45, 6, 7 , 12
- 
-// COLA            45 -> 6 -> 7 ->  12 -> NULL      
+//vaciar la cola, eliminar
+void vaciarcola(struct cola &q){
+	//auxiliar para eliminar cada elemento
+	struct nodo *aux;
+	//si esta vacia
+	while(q.delante != NULL){
+		aux = q.delante;
+		q.delante = aux->siguiente;
+		delete(aux);
+	}
+	q.delante = NULL;
+	q.atras = NULL;
+}
 
-void eliminarNodo(){
-	nodo* actual = new nodo();
-	actual = primero;
-	nodo* anterior = new nodo();
-	anterior = NULL;
-	bool encontrado = false;
-	int nodoBuscado = 0;
-	cout << " Ingrese el dato del nodo a Buscar para Eliminar: ";
-	cin >> nodoBuscado;
-	if(primero != NULL){
+void menu(){
+	cout<<"\n\t Ejemplo de Colita Kawaii\n";
+	cout<<"\t 1. Encolar\n";
+	cout<<"\t 2. Desencolar\n";
+	cout<<"\t 3. Mostrar\n";
+	cout<<"\t 4. Vaciar\n";
+	cout<<"\t 5. Salir\n";
+}
+
+int main(){
+	//primero declaramos la cola
+	struct cola q;
+	
+	//defino la cola con sus apuntadores
+	q.delante = NULL;
+	q.atras = NULL;
+	
+	//datos
+	int dato;
+	int op;
+	int x; //funcion de pop a la cola
+	
+	do{
+		menu();
+		cout<<"\t"; cin>>op;
 		
-		while(actual!=NULL && encontrado != true){
+		switch(op){
+			case 1:
+				cout<<"\n\t Numero a Encolar: ";
+				cout<<"\t"; cin>>dato;
+				encolar(q,dato);
+				cout<<"\n\t Numero: "<<dato<<" encolado...\n";
+			break;
 			
-			if(actual->dato == nodoBuscado){
-				cout << "\n Nodo con el dato ( " << nodoBuscado << " ) Encontrado";
-				
-				if(actual == primero){
-					primero = primero -> siguiente;
-				}else if(actual == ultimo){
-					anterior->siguiente = NULL;
-					ultimo = anterior;
-				}else{
-					anterior->siguiente = actual->siguiente;
-				}
-				
-				cout << "\n Nodo Eliminado\n\n";
-				
-				encontrado = true;
-			}
-			anterior = actual;
-			actual = actual->siguiente;
+			case 2:
+				x = desencolar(q);
+				cout<<"\n\t Numero: "<<x<<" desencolado...\n";
+			break;
+			
+			case 3:
+				cout<<"\n\t Mostrar Cola: \n";
+				//saber que no este null
+				if(q.delante != NULL) muestracola(q);
+				else cout<<"\n\t Cola Vacia...\n";
+				cout<<endl;
+			break;
+			
+			case 4:
+				vaciarcola(q);
+				cout<<"\n\t Colita se Vacio...\n";
+			break;
+			
 		}
-		if(!encontrado){
-			cout << "\n Nodo No Encontrado\n\n";
-		}
-	}else{
-		cout << endl << " La cola se encuentra Vacia " << endl << endl;
-	}	
-}
-
-void desplegarCola(){
-	nodo* actual = new nodo();
-	actual = primero;
-	if(primero!=NULL){
-		while(actual!=NULL){
-			cout << endl << " " << actual->dato;
-			actual = actual->siguiente;
-		}
-	}else{
-		cout << endl << " La cola se encuentra Vacia " << endl << endl;
-	}
+	}while(op != 5);
+	
+	return 0;
 }
