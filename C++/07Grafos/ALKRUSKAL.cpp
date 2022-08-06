@@ -1,11 +1,19 @@
-#include "GRAFICA.h"
 #include <iostream>
+#define MAXI 20
 
+int MatAdy[MAXI] [MAXI];
+	int NumVer, Vertices [MAXI];
+	int Ind1, Ind2;
+	
 using namespace std;
 
-GRAFICA::GRAFICA(){
+void GRAFICA(){
 	
-	int Ind1, Ind2;
+	
+	
+	
+	
+	
 	for(Ind1=0;Ind1<MAXI;Ind1++){
 		for(Ind2=0;Ind2<MAXI;Ind2++){
 			if(Ind1!=Ind2){
@@ -16,27 +24,27 @@ GRAFICA::GRAFICA(){
 	}
 	NumVer=0;
 }
-int GRAFICA::Minimo(int Val1, int Val2){
+int Minimo(int Val1, int Val2){
 	int Min=Val1;
 	if(Val2<Min)
 		Min=Val2;
 	return Min;
 }
 
-int GRAFICA::Maximo(int Val1, int Val2){
+int Maximo(int Val1, int Val2){
 	int Max=Val1;
-	if(Val2<Min)
+	if(Val2<Max)
 		Max=Val2;
 	return Max;
 }
 
-void GRAFICA::Leer(){
+void Leer(){
 	int Aristas, Costo, Indi1, Origen, Destino;
 	cout<<"Ingrese Total de Vertices: ";
 	cin>>NumVer;
-	for(Indi1=0;Ind1<NumVer;Indi1++){
+	for(Indi1=0;Indi1<NumVer;Indi1++){
 		cout<<"\nIngrese Nombre del Vertice: ";
-		cin>>Vertices[Ind1];
+		cin>>Vertices[Indi1];
 	}
 	cout<<"\nIngrese Total de Aristas: ";
 	cin>>Aristas;
@@ -54,13 +62,13 @@ void GRAFICA::Leer(){
 	}
 }
 
-void GRAFICA::Kruskal(){
+void Kruskal(){
 	/*ArisCosto[][] Es una matriz auxiliar almacena en cada renglon los datos
 	de una arista, los vertices y el costo.
 	Pario[] almacena las particiones de vertices
 	*/
 	
-	int ArisCosto[ MAXI][3], Partio[MAXI],Indi1,Indi2,Ver1,TotalAris,Menor,Mayor,Bandera;
+	int ArisCosto[ MAXI][3], Partio[MAXI],Indi1,Indi2,Ver1, Ver2,TotalAris,Menor,Mayor,Bandera;
 	for(Indi1=0;Indi1<NumVer;Indi1++){
 		Partio[Indi1]=Indi1;
 	}
@@ -92,23 +100,31 @@ void GRAFICA::Kruskal(){
 		}
 		ArisCosto[Indi2][2]=999;
 		if(Partio[Ver1]!=Partio[Ver2]){
-			cout<<"\nVertice: "<<Vertice[Ver1]<<" Vertice: "<<Vertices[Ver2]<<" Costo: "<<MatAdy[Ver1][Ver2];
+			cout<<"\nVertice: "<<Vertices[Ver1]<<" Vertice: "<<Vertices[Ver2]<<" Costo: "<<MatAdy[Ver1][Ver2];
 			Mayor=Maximo(Partio[Ver1],Partio[Ver2]);
 			for(Indi1=0;Indi1<NumVer; Indi1++){
 				if(Ind1==Ver1 || Indi1==Ver2 || Partio[Indi1]==Mayor){
-					Partio[Indi1]=Minimo(Partio[Ver1], Partio[Ver2];)
+					Partio[Indi1]=Minimo(Partio[Ver1], Partio[Ver2]);
 				}
 			}
 		}
 		Indi1=0;
 		while(Indi1<NumVer && !Bandera){
 			if(Partio[Indi1]!=0){
-				Bandera1;
+				Bandera=1;
 			}
 			Indi1++;
 		}
 		Bandera=!Bandera;
 	}
+}
+
+int main(){
+	system("color f0");
+	cout<<"Ingrese los datos de las Ciudades y las Carreras\n";
+	Leer();
+	Kruskal();
+	return 0;
 }
 
 
