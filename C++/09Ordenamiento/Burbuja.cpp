@@ -57,7 +57,7 @@ void burbuja(int n, struct ordenamiento a[]){
 			//realizo la comparacion
 			if(a[j-1].elem>a[j].elem){
 				//aqui hacemos el cambio de posiciones
-				tem = a[j-1];
+				temp = a[j-1];
 				a[j-1] = a[j];
 				a[j] = temp;
 			}
@@ -65,10 +65,10 @@ void burbuja(int n, struct ordenamiento a[]){
 	}
 }
 
-void mmostrar(int n, struct ordenamiento a[]){
+void mostrar(int n, struct ordenamiento a[]){
 	//imprimir elemento por elemento
 	for(int i = 0; i<n; i++){
-		cout<<""<<a[i].elem;
+		cout<<"[ "<<a[i].elem<<" ]";
 	}
 }
 
