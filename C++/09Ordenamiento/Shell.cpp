@@ -12,7 +12,7 @@ int main(){
 	cin>>total;
 	int num[total];
 	for(int i=0;i<total;i++){
-		cout<<"Ingrese el Numero para la Posicion [ "<<(i+1)<<" ] del Arreglo"<<endl;
+		cout<<"\n\t Ingrese el Numero para la Posicion [ "<<(i+1)<<" ] del Arreglo"<<endl;
 		cin>>num[i];
 	}
 	
@@ -28,7 +28,7 @@ void Shell(int a[], int n){
 	
 	ints=n;
 	
-	while(ints>1){
+	while(ints>0){
 		ints=(ints/2);
 		band=true;
 		
@@ -50,8 +50,7 @@ void Shell(int a[], int n){
 
 void Imprimir(int a[], int n){
 	cout<<"\n\t Numero del Arreglo Ordenados de Menor a Mayor"<<endl;
-	
-	for (int i=0;i<n;i++){
+	for (int i=1;i<n+1;i++){
 		cout<<"[ "<<a[i]<<" ]";
 	}
 }
