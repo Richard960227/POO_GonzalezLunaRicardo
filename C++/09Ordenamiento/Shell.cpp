@@ -31,7 +31,7 @@ void Shell(int a[], int n){
 	while(ints>0){
 		ints=(ints/2);
 		band=true;
-		
+		cout<<endl<<"\t| 1. Posicion Actual en el Elemento ["<<a[i]<<"]";
 		while(band==true){
 			band=false;
 			i=0;
@@ -44,7 +44,16 @@ void Shell(int a[], int n){
 				}
 				i++;
 			}
+			
+			
+		cout<<endl<<"\t| 2. Recorremos el Arreglo Buscando el Minimo Elemento ["<<a[aux]<<"]";
+		cout<<endl<<"\t| 3. Intercambiamos con el Actual";
+		cout<<endl<<"\t|"<<endl<<"\t| ";
+		for(int i=0; i<n; i++){
+			cout<<" ["<<a[i]<<"] ";
 		}
+		}
+		
 	}
 }
 

@@ -84,6 +84,7 @@ void SelectionSort(int n, struct ordenamiento a[]){
 	int i, j, aux, min;
 	
 	cout<<"\t|\n\t| Metodo SelectionSort: "<<endl<<"\t|";
+	cout<<"\n\t| Actual Recorre el Arreglo";
 	
 	for(i=0; i<n; i++){
 		min=i;
@@ -93,7 +94,6 @@ void SelectionSort(int n, struct ordenamiento a[]){
 			}
 		}
 		
-		cout<<"\n\t| Actual Recorre el Arreglo";
 		cout<<endl<<"\t| 1. Posicion Actual en el Elemento ["<<a[i].elem<<"]";
 		cout<<endl<<"\t| 2. Recorremos el Arreglo Buscando el Minimo Elemento ["<<a[min].elem<<"]";
 		cout<<endl<<"\t| 3. Intercambiamos con el Actual";
@@ -130,17 +130,37 @@ void SelectionSort(int n, struct ordenamiento a[]){
 void BubbleSort(int n, struct ordenamiento a[]){
 	int i, j, aux;
 	
-	for(i=1; i<n; i++){
+	cout<<"\t|\n\t| Metodo BubbleSort: "<<endl<<"\t|";
+	cout<<"\n\t| Actual Recorre el Arreglo\n\t| ";
+	
+	for(i=0; i<n; i++){
+		
+		for(int i=0; i<n; i++){	
+			cout<<" ["<<a[i].elem<<"] ";
+		}
+				
+		cout<<endl<<"\n\t| 1. Posicion Actual en el Elemento ["<<a[i].elem<<"]";
+		
 		for(j=n-1; j>=i; j--){
+			
 			if(a[j-1].elem>a[j].elem){
+				
+				cout<<endl<<"\t| 2. Si Numero Actual es Mayor al Siguiente Elemento ["<<a[i+1].elem<<"]";
+				
 				aux = a[j-1].elem;
 				a[j-1].elem = a[j].elem;
 				a[j].elem = aux;
+					
 			}
+			
 		}
+		
+		cout<<endl<<"\t| 3. Intercambiamos con el Actual";
+				
+		cout<<endl<<"\t|"<<endl<<"\t| ";
+		
 	}
 	
-	cout<<"\t|\n\t| Metodo BubbleSort: ";
 	cout<<"\n\t| Orden Ascendente: \n\t| ";
 	for(i=0; i<n; i++){
 		cout<<"[ "<<a[i].elem<<" ] ";
@@ -158,18 +178,33 @@ void BubbleSort(int n, struct ordenamiento a[]){
 void InsertionSort(int n, struct ordenamiento a[]){
 	int i, pos, aux;
 	
+	cout<<"\t|\n\t| Metodo InsertionSort: "<<endl<<"\t|";
+	cout<<"\n\t| Actual Recorre el Arreglo";
+	
 	for(i=0; i<n; i++){
 		pos=i;
 		aux=a[i].elem;
 		
+		cout<<endl<<"\t| 1. Posicion Actual en el Elemento ["<<a[pos].elem<<"]";
+		
 		while((pos>0) && (a[pos-1].elem > aux)){
 			a[pos].elem = a[pos-1].elem;
 			pos--;
+			cout<<endl<<"\t| 2. Comprobar si Elemento Actual es Menor que los Elementos a la Izq ["<<a[pos].elem<<"]";
 		}
+		
 		a[pos].elem = aux;
+		
+		cout<<endl<<"\t| 3. Posicionamos Actual como Menor";
+		cout<<endl<<"\t|"<<endl<<"\t|";
+		for(int i=0; i<n; i++){
+			cout<<" ["<<a[i].elem<<"] ";
+		}
+		
+		cout<<endl<<"\t|";
+		
 	}
 	
-	cout<<"\t|\n\t| Metodo InsertionSort: ";
 	cout<<"\n\t| Orden Ascendente: ";
 	for(i=0; i<n; i++){
 		cout<<"[ "<<a[i].elem<<" ] ";
