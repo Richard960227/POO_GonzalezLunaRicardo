@@ -131,21 +131,21 @@ void BubbleSort(int n, struct ordenamiento a[]){
 	int i, j, aux;
 	
 	cout<<"\t|\n\t| Metodo BubbleSort: "<<endl<<"\t|";
-	cout<<"\n\t| Actual Recorre el Arreglo\n\t| ";
+	cout<<"\n\t| Actual Recorre el Arreglo\n\t|\n\t|";
 	
-	for(i=0; i<n; i++){
+	for(i=1; i<n; i++){
 		
 		for(int i=0; i<n; i++){	
 			cout<<" ["<<a[i].elem<<"] ";
 		}
 				
-		cout<<endl<<"\n\t| 1. Posicion Actual en el Elemento ["<<a[i].elem<<"]";
+		cout<<"\n\t|\n\t| 1. Posicion Actual en el Elemento ["<<a[i-1].elem<<"]";
 		
 		for(j=n-1; j>=i; j--){
 			
 			if(a[j-1].elem>a[j].elem){
 				
-				cout<<endl<<"\t| 2. Si Numero Actual es Mayor al Siguiente Elemento ["<<a[i+1].elem<<"]";
+				cout<<endl<<"\t| 2. Si Numero Actual es Mayor al Siguiente Elemento ["<<a[i].elem<<"]";
 				
 				aux = a[j-1].elem;
 				a[j-1].elem = a[j].elem;

@@ -8,12 +8,18 @@ void Shell(int [], int n);
 int main(){
 	
 	int total;
-	cout<<"\n\t Ingresa el Numero para el arreglo"<<endl;
+	cout<<"\n\t Ingresa el Limite para el Arreglo: ";
 	cin>>total;
 	int num[total];
 	for(int i=0;i<total;i++){
-		cout<<"\n\t Ingrese el Numero para la Posicion [ "<<(i+1)<<" ] del Arreglo"<<endl;
+		cout<<"\n\t Ingrese el Numero para la Posicion [ "<<(i+1)<<" ] del Arreglo: ";
 		cin>>num[i];
+	}
+	
+	cout<<"\n\t";
+	
+	for(int i=0; i<total; i++){	
+		cout<<" ["<<num[i]<<"] ";
 	}
 	
 	Shell(num,total);
@@ -31,35 +37,55 @@ void Shell(int a[], int n){
 	while(ints>0){
 		ints=(ints/2);
 		band=true;
-		cout<<endl<<"\t| 1. Posicion Actual en el Elemento ["<<a[i]<<"]";
+		
+		cout<<endl<<"\n\t El arreglo se Divide a la Mitad: ["<<ints<<"]\n";
+			
+		
 		while(band==true){
+			
 			band=false;
 			i=0;
 			while((i+ints)<=n){
-				if(a[i]>a[i+ints]){
+				
+				
+		
+				if(a[i]>a[i+ints] && a[i+ints]>0){
+					
+					
+				
+					cout<<"\n\t Intercambiamos si "<<a[i]<<" es mayor "<<a[i+ints]<<"\n\n\t";
+					
+					for(int i=0; i<n; i++){
+					cout<<" ["<<a[i]<<"] ";
+				}
+				
 					aux=a[i];
 					a[i]=a[i+ints];
 					a[i+ints]=aux;
 					band=true;
+				
 				}
 				i++;
 			}
 			
 			
-		cout<<endl<<"\t| 2. Recorremos el Arreglo Buscando el Minimo Elemento ["<<a[aux]<<"]";
-		cout<<endl<<"\t| 3. Intercambiamos con el Actual";
-		cout<<endl<<"\t|"<<endl<<"\t| ";
-		for(int i=0; i<n; i++){
-			cout<<" ["<<a[i]<<"] ";
+		
+		//cout<<endl<<"\t|"<<endl<<"\t| ";
+		
 		}
-		}
+		//cout<<endl<<"\t| 2. Comparamos el 1er Elemento con el de la Mitad ["<<a[ints]<<"]";
+		
 		
 	}
 }
 
 void Imprimir(int a[], int n){
-	cout<<"\n\t Numero del Arreglo Ordenados de Menor a Mayor"<<endl;
-	for (int i=1;i<n+1;i++){
-		cout<<"[ "<<a[i]<<" ]";
+	cout<<"\n\t| Orden Ascendente: \n\t| ";
+	for(int i=0; i<n; i++){
+		cout<<"[ "<<a[i]<<" ] ";
+	}
+	cout<<"\n\t| Orden Descendente: \n\t| ";
+	for(int i=n-1; i>=0; i--){
+		cout<<"[ "<<a[i]<<" ] ";
 	}
 }
